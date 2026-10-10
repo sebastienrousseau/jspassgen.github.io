@@ -14,13 +14,5 @@
       <pubDate></pubDate>
       <author>Sebastien Rousseau</author>
     </item>
-    <item>
-      <title>Page Not Found | jspassgen</title>
-      <link>https://jspassgen.com/404/</link>
-      <description>The requested page does not exist.</description>
-      <guid isPermaLink="true">https://jspassgen.com/404/</guid>
-      <pubDate></pubDate>
-      <author>Sebastien Rousseau</author>
-    </item>
   </channel>
 </rss>

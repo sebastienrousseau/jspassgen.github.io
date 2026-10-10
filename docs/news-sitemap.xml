@@ -2,17 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 <url>
-  <loc>https://jspassgen.com/404/</loc>
-  <news:news>
-    <news:publication>
-      <news:name>Sebastien Rousseau</news:name>
-      <news:language>en-GB</news:language>
-    </news:publication>
-    <news:publication_date></news:publication_date>
-    <news:title>Page Not Found | jspassgen</news:title>
-  </news:news>
-</url>
-<url>
   <loc>https://jspassgen.com/about/</loc>
   <news:news>
     <news:publication>

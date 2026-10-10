@@ -6,15 +6,6 @@
   <id>https://jspassgen.com</id>
   <updated></updated>
   <entry>
-    <title>Page Not Found | jspassgen</title>
-    <link href="https://jspassgen.com/404/"/>
-    <id>https://jspassgen.com/404/</id>
-    <updated></updated>
-    <published></published>
-    <summary>The requested page does not exist.</summary>
-    <author><name>Sebastien Rousseau</name></author>
-  </entry>
-  <entry>
     <title>About jspassgen | Security Architecture and Principles</title>
     <link href="https://jspassgen.com/about/"/>
     <id>https://jspassgen.com/about/</id>

@@ -8,21 +8,6 @@
           "name": "Sebastien Rousseau"
         }
       ],
-      "content_html": "The requested page does not exist.",
-      "date_modified": "",
-      "date_published": "",
-      "id": "https://jspassgen.com/404/",
-      "language": "en-GB",
-      "tags": [],
-      "title": "Page Not Found | jspassgen",
-      "url": "https://jspassgen.com/404/"
-    },
-    {
-      "authors": [
-        {
-          "name": "Sebastien Rousseau"
-        }
-      ],
       "content_html": "Cryptographic principles, hexagonal architecture, and verifiable entropy standards behind jspassgen.",
       "date_modified": "",
       "date_published": "",
