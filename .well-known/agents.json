@@ -8,8 +8,12 @@
     "type": "none"
   },
   "api": {
-    "type": "openapi",
-    "url": "https://jspassgen.com/openapi.json"
+    "type": "none"
+  },
+  "package": {
+    "name": "jspassgen",
+    "registry": "https://www.npmjs.com/package/jspassgen",
+    "repository": "https://github.com/sebastienrousseau/jspassgen"
   },
   "logo_url": "https://jspassgen.com/images/logo.svg",
   "contact_email": "contact@sebastienrousseau.com",

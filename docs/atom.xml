@@ -20,7 +20,7 @@
     <id>https://jspassgen.com/about/</id>
     <updated></updated>
     <published></published>
-    <summary>Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.</summary>
+    <summary>Cryptographic principles, hexagonal architecture, and verifiable entropy standards behind jspassgen.</summary>
     <author><name>Sebastien Rousseau</name></author>
   </entry>
 </feed>

@@ -1,12 +1,12 @@
 [
   {
     "date": "2026-10-10",
-    "description": "Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.",
+    "description": "Cryptographic principles, hexagonal architecture, and verifiable entropy standards behind jspassgen.",
     "locale": "en-GB",
     "tags": [],
     "title": "About jspassgen | Security Architecture and Principles",
     "url": "https://jspassgen.com/about/",
-    "wordCount": 117
+    "wordCount": 302
   },
   {
     "date": "2026-10-10",

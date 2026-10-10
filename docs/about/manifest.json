@@ -1,6 +1,6 @@
 {
   "background_color": "#ffffff",
-  "description": "Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.",
+  "description": "Cryptographic principles, hexagonal architecture, and verifiable entropy standards behind jspassgen.",
   "display": "standalone",
   "icons": [],
   "name": "jspassgen",

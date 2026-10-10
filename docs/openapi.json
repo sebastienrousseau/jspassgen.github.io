@@ -1,0 +1,18 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "jspassgen",
+    "description": "Zero-dependency, quantum-resistant password and passphrase generator. All operations execute client-side via WebCrypto and Node.js crypto.",
+    "version": "0.0.19",
+    "license": {
+      "name": "MIT / Apache-2.0",
+      "url": "https://github.com/sebastienrousseau/jspassgen"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://jspassgen.com"
+    }
+  ],
+  "paths": {}
+}
