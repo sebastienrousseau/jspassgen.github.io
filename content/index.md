@@ -6,6 +6,8 @@ description: "Zero-dependency, quantum-resistant password and EFF Diceware passp
 keywords: "password generator, diceware, passphrase, quantum-resistant, argon2id, honeywords, shannon entropy, nist sp 800-63b, webcrypto, zero-dependency, jspassgen"
 author: "Sebastien Rousseau"
 date: "2026-10-10"
+lastmod: "2026-10-10"
+news_publication_date: "2026-10-10T12:00:00+00:00"
 layout: "index"
 language: "en-GB"
 schema: "SoftwareApplication"

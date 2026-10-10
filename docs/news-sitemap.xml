@@ -8,7 +8,7 @@
       <news:name>Sebastien Rousseau</news:name>
       <news:language>en-GB</news:language>
     </news:publication>
-    <news:publication_date></news:publication_date>
+    <news:publication_date>2026-10-10T12:00:00+00:00</news:publication_date>
     <news:title>About jspassgen | Security Architecture and Principles</news:title>
   </news:news>
 </url>
