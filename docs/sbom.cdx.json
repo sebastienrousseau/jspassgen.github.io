@@ -39,7 +39,7 @@
       "name": "static-site",
       "type": "application"
     },
-    "timestamp": "2026-10-10T21:14:45Z",
+    "timestamp": "2026-10-10T21:44:47Z",
     "tools": [
       {
         "name": "ssg",
@@ -48,7 +48,7 @@
       }
     ]
   },
-  "serialNumber": "urn:uuid:2710ff4e-646a-8848-8a22-57128629233f",
+  "serialNumber": "urn:uuid:257aadfa-7b53-8e95-870f-1a68a83b6dd9",
   "specVersion": "1.5",
   "version": 1
 }
