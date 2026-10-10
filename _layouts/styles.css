@@ -214,16 +214,16 @@
   background: var(--surface);
   color: var(--ink);
 }
-:root[data-theme="light"] #mode-toggle .theme-icon::before,
-:root[data-theme-mode="light"] #mode-toggle .theme-icon::before { content: "☀️"; font-size: 1rem; }
+:root[data-theme="light"] #mode-toggle .theme-icon::before { content: "☀️"; }
+:root[data-theme-mode="light"] #mode-toggle .theme-icon::before { content: "☀️"; }
 :root[data-theme="dark"] #mode-toggle.theme-toggle,
 :root[data-theme-mode="dark"] #mode-toggle.theme-toggle {
   border-color: var(--border-strong);
   background: var(--surface);
   color: var(--ink);
 }
-:root[data-theme="dark"] #mode-toggle .theme-icon::before,
-:root[data-theme-mode="dark"] #mode-toggle .theme-icon::before { content: "🌙"; font-size: 1rem; }
+:root[data-theme="dark"] #mode-toggle .theme-icon::before { content: "🌙"; }
+:root[data-theme-mode="dark"] #mode-toggle .theme-icon::before { content: "🌙"; }
 
 /* Mobile nav disclosure */
 .nav-toggle {
@@ -260,7 +260,28 @@
   }
 }
 
+/* WCAG 2.4.13 — Focus visible */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* WCAG 2.3.3 — Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
