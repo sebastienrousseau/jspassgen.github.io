@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://jspassgen.com/about/sitemap.xml

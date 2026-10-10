@@ -1,0 +1,18 @@
+# jspassgen - Full Cryptographic & Engineering Context
+
+## Overview
+jspassgen is an open-source security tool and cryptographic library providing secure password and passphrase generation across Web, Node.js, and Terminal CLI environments.
+
+## Cryptographic Security Properties
+1. Entropy Sourcing: Uses standard CSPRNGs (Web Crypto API `crypto.getRandomValues` in browsers; `crypto.randomBytes` in Node.js).
+2. Elimination of Modulo Bias: Rejection sampling is strictly enforced across all integer selection algorithms to guarantee uniform distribution across character sets.
+3. EFF Diceware Dictionary: Full 7,776-word dictionary compiled by the Electronic Frontier Foundation, offering log2(7776) = 12.9155 bits of entropy per word.
+4. Active Honeywords: Implements the Juels-Rivest honeywords system. Authentic-looking decoys are placed into credential stores to detect unauthorized database compromises.
+5. Post-Quantum Readiness: Employs memory-hard KDF derivation (Argon2id) resistant to Grover's algorithm and high-throughput ASIC/GPU brute-force search.
+6. Zero Telemetry & Offline Execution: No credentials or analytics packets leave the local device boundary.
+
+## Repository & Ecosystem
+- Web: https://jspassgen.com
+- Package Registry: https://www.npmjs.com/package/jspassgen
+- GitHub Source: https://github.com/sebastienrousseau/jspassgen
+- Maintainer: Sebastien Rousseau (https://sebastienrousseau.com)

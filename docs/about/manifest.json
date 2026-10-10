@@ -1,0 +1,12 @@
+{
+  "background_color": "#ffffff",
+  "description": "Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.",
+  "display": "standalone",
+  "icons": [],
+  "name": "jspassgen",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": null,
+  "start_url": ".",
+  "theme_color": null
+}

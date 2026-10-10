@@ -1,0 +1,21 @@
+{
+  "api": "ssg-agent-api",
+  "counts": {
+    "posts": 2,
+    "topics": 0
+  },
+  "links": {
+    "index": "https://jspassgen.com/api/agents/index.json",
+    "person": "https://jspassgen.com/api/agents/person.json",
+    "posts": "https://jspassgen.com/api/agents/posts.json",
+    "topics": "https://jspassgen.com/api/agents/topics.json"
+  },
+  "site": {
+    "description": "Zero-dependency, quantum-resistant password and EFF Diceware passphrase generator with Shannon entropy scoring, honeyword decoys, and client-side WebCrypto security.",
+    "language": "en-GB",
+    "name": "jspassgen",
+    "title": "jspassgen | Quantum-Resistant Password and Passphrase Generator",
+    "url": "https://jspassgen.com"
+  },
+  "version": "0.0.67"
+}

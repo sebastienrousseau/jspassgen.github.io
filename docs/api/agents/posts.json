@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-10-10",
+    "description": "Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.",
+    "locale": "en-GB",
+    "tags": [],
+    "title": "About jspassgen | Security Architecture and Principles",
+    "url": "https://jspassgen.com/about/",
+    "wordCount": 117
+  },
+  {
+    "date": "2026-10-10",
+    "description": "Zero-dependency, quantum-resistant password and EFF Diceware passphrase generator with Shannon entropy scoring, honeyword decoys, and client-side WebCrypto security.",
+    "locale": "en-GB",
+    "tags": [],
+    "title": "jspassgen | Quantum-Resistant Password and Passphrase Generator",
+    "url": "https://jspassgen.com/index.html",
+    "wordCount": 89
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "feed_url": "https://jspassgen.com/feed.json",
+  "home_page_url": "https://jspassgen.com/",
+  "items": [
+    {
+      "authors": [
+        {
+          "name": "Sebastien Rousseau"
+        }
+      ],
+      "content_html": "The requested page does not exist.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://jspassgen.com/404/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "Page Not Found | jspassgen",
+      "url": "https://jspassgen.com/404/"
+    },
+    {
+      "authors": [
+        {
+          "name": "Sebastien Rousseau"
+        }
+      ],
+      "content_html": "Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.",
+      "date_modified": "",
+      "date_published": "",
+      "id": "https://jspassgen.com/about/",
+      "language": "en-GB",
+      "tags": [],
+      "title": "About jspassgen | Security Architecture and Principles",
+      "url": "https://jspassgen.com/about/"
+    }
+  ],
+  "language": "en-GB",
+  "title": "jspassgen",
+  "version": "https://jsonfeed.org/version/1.1"
+}

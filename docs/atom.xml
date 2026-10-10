@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>jspassgen</title>
+  <link href="https://jspassgen.com/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://jspassgen.com"/>
+  <id>https://jspassgen.com</id>
+  <updated></updated>
+  <entry>
+    <title>Page Not Found | jspassgen</title>
+    <link href="https://jspassgen.com/404/"/>
+    <id>https://jspassgen.com/404/</id>
+    <updated></updated>
+    <published></published>
+    <summary>The requested page does not exist.</summary>
+    <author><name>Sebastien Rousseau</name></author>
+  </entry>
+  <entry>
+    <title>About jspassgen | Security Architecture and Principles</title>
+    <link href="https://jspassgen.com/about/"/>
+    <id>https://jspassgen.com/about/</id>
+    <updated></updated>
+    <published></published>
+    <summary>Learn about the cryptographic principles, hexagonal architecture, and design philosophy behind jspassgen.</summary>
+    <author><name>Sebastien Rousseau</name></author>
+  </entry>
+</feed>

@@ -1,0 +1,11 @@
+{
+  "background_color": "#ffffff",
+  "description": "Zero-dependency, quantum-resistant password and EFF Diceware passphrase generator with Shannon entropy scoring, honeyword decoys, and client-side WebCrypto security.",
+  "display": "standalone",
+  "name": "jspassgen",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "short_name": "jspassgen",
+  "start_url": ".",
+  "theme_color": null
+}

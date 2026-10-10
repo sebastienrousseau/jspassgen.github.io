@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "jspassgen",
+  "name_for_human": "jspassgen",
+  "description_for_model": "Quantum-resistant, zero-dependency password and EFF Diceware passphrase generator with Shannon entropy scoring and Juels-Rivest honeyword decoys.",
+  "description_for_human": "The quantum-resistant password generator built for the post-quantum era.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://jspassgen.com/openapi.json"
+  },
+  "logo_url": "https://jspassgen.com/images/logo.svg",
+  "contact_email": "contact@sebastienrousseau.com",
+  "legal_info_url": "https://jspassgen.com/about"
+}

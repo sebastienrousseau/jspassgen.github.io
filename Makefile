@@ -1,0 +1,23 @@
+SSG := /Users/seb/Code/Public/Rust/static-site-generator/target/release/ssg
+
+.PHONY: all build clean check
+
+all: build
+
+build:
+	$(SSG) build -f ssg.toml
+	@mkdir -p docs/images docs/.well-known
+	@cp -f CNAME docs/CNAME 2>/dev/null || true
+	@cp -f images/logo.svg docs/images/logo.svg 2>/dev/null || true
+	@cp -f favicon.svg docs/favicon.svg 2>/dev/null || true
+	@cp -f llms.txt docs/llms.txt 2>/dev/null || true
+	@cp -f llms-full.txt docs/llms-full.txt 2>/dev/null || true
+	@cp -f .well-known/agents.json docs/.well-known/agents.json 2>/dev/null || true
+	@cp -f .well-known/security.txt docs/.well-known/security.txt 2>/dev/null || true
+	@cp -f robots.txt docs/robots.txt 2>/dev/null || true
+
+check:
+	$(SSG) check -f ssg.toml
+
+clean:
+	rm -rf docs/*.html docs/sitemap.xml docs/manifest.json
