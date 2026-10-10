@@ -6,7 +6,7 @@
   "name": "jspassgen",
   "orientation": "portrait-primary",
   "scope": "/",
-  "short_name": null,
+  "short_name": "jspassgen",
   "start_url": ".",
   "theme_color": "#2455e8"
 }

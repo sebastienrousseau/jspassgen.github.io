@@ -19,6 +19,7 @@ build:
 	@cp -f .well-known/security.txt docs/.well-known/security.txt 2>/dev/null || true
 	@cp -f robots.txt docs/robots.txt 2>/dev/null || true
 	@sed -i '' 's/"theme_color": null/"theme_color": "#2455e8"/g' docs/manifest.json docs/*/manifest.json 2>/dev/null || true
+	@sed -i '' 's/"short_name": null/"short_name": "jspassgen"/g' docs/manifest.json docs/*/manifest.json 2>/dev/null || true
 	@python3 scripts/clean_sitemaps.py
 
 check:
