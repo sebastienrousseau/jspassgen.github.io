@@ -1,4 +1,4 @@
-SSG := /Users/seb/Code/Public/Rust/static-site-generator/target/release/ssg
+SSG ?= $(shell command -v ssg 2>/dev/null || echo /Users/seb/Code/Public/Rust/static-site-generator/target/release/ssg)
 
 .PHONY: all build clean check
 
