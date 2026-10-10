@@ -11,6 +11,7 @@
   "reading_time": 1,
   "schema": "SoftwareApplication",
   "short_name": "jspassgen",
+  "theme_color": "#10b981",
   "theme_colour": "#10b981",
   "theme_style": "style-dark",
   "title": "jspassgen | Quantum-Resistant Password and Passphrase Generator",

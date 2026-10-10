@@ -426,24 +426,24 @@
     // Rating
     let grade = "Weak";
     let score = 20;
-    let color = "var(--strength-weak)";
+    let level = "weak";
 
     if (bits >= 128) {
       grade = "Quantum-Resistant";
       score = 100;
-      color = "var(--strength-quantum)";
+      level = "quantum";
     } else if (bits >= 80) {
       grade = "Very Strong";
       score = 90;
-      color = "var(--strength-strong)";
+      level = "strong";
     } else if (bits >= 60) {
       grade = "Strong";
       score = 75;
-      color = "var(--strength-good)";
+      level = "good";
     } else if (bits >= 40) {
       grade = "Fair";
       score = 50;
-      color = "var(--strength-fair)";
+      level = "fair";
     }
 
     return {
@@ -453,7 +453,7 @@
       crackTime: crackTime,
       grade: grade,
       score: score,
-      color: color
+      level: level
     };
   }
 
@@ -475,19 +475,19 @@
 
     if (currentMode === "random") {
       pwd = generateRandomPassword(length, opts);
-      if (honeywordsBox) honeywordsBox.style.display = "none";
+      if (honeywordsBox) honeywordsBox.classList.add("is-hidden");
     } else if (currentMode === "diceware") {
       const wordsCount = Math.max(3, Math.min(10, Math.round(length / 4)));
       pwd = generateDicewarePassphrase(wordsCount, "-", true, true);
-      if (honeywordsBox) honeywordsBox.style.display = "none";
+      if (honeywordsBox) honeywordsBox.classList.add("is-hidden");
     } else if (currentMode === "quantum") {
       pwd = generateQuantumPassword(Math.max(length, 32));
-      if (honeywordsBox) honeywordsBox.style.display = "none";
+      if (honeywordsBox) honeywordsBox.classList.add("is-hidden");
     } else if (currentMode === "honeywords") {
       pwd = generateRandomPassword(Math.max(16, length), opts);
       const decoys = generateHoneywords(pwd, 4);
       if (honeywordsBox) {
-        honeywordsBox.style.display = "block";
+        honeywordsBox.classList.remove("is-hidden");
         const list = document.getElementById("honeywordsList");
         if (list) {
           list.innerHTML = `
@@ -519,12 +519,11 @@
     if (nistEl) nistEl.textContent = metrics.entropy >= 64 ? "Compliant (10/10)" : "Sub-optimal";
 
     if (strengthFill) {
-      strengthFill.style.width = metrics.score + "%";
-      strengthFill.style.backgroundColor = metrics.color;
+      strengthFill.className = `strength-bar-fill strength-${metrics.level}`;
     }
     if (strengthLabel) {
       strengthLabel.textContent = metrics.grade;
-      strengthLabel.style.color = metrics.color;
+      strengthLabel.className = `strength-label text-${metrics.level}`;
     }
   }
 
@@ -536,13 +535,13 @@
       const btn = document.getElementById("btnCopy");
       if (btn) {
         const originalText = btn.innerHTML;
-        btn.innerHTML = `✓ Copied (45s TTL)`;
-        btn.style.backgroundColor = "var(--accent-teal)";
+        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>Copied (45s TTL)</span>`;
+        btn.classList.add("is-copied");
 
         if (copyTimeout) clearTimeout(copyTimeout);
         copyTimeout = setTimeout(() => {
           btn.innerHTML = originalText;
-          btn.style.backgroundColor = "";
+          btn.classList.remove("is-copied");
         }, 3000);
       }
     }).catch(err => {
@@ -596,12 +595,14 @@
     if (themeBtn) {
       themeBtn.addEventListener("click", () => {
         const html = document.documentElement;
-        const current = html.getAttribute("data-theme-mode") || "system";
+        const current = html.getAttribute("data-theme-mode") || html.getAttribute("data-theme") || "system";
         let next = "dark";
         if (current === "dark") next = "light";
         else if (current === "light") next = "dark";
         html.setAttribute("data-theme-mode", next);
+        html.setAttribute("data-theme", next);
         localStorage.setItem("jspassgen-theme", next);
+        localStorage.setItem("theme", next);
       });
     }
 
@@ -609,11 +610,11 @@
     const faqQuestions = document.querySelectorAll(".faq-question");
     faqQuestions.forEach(btn => {
       btn.addEventListener("click", () => {
-        const answer = btn.nextElementSibling;
+        const item = btn.closest(".faq-item");
         const expanded = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", !expanded);
-        if (answer) {
-          answer.style.display = expanded ? "none" : "block";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        if (item) {
+          item.classList.toggle("is-open", !expanded);
         }
       });
     });

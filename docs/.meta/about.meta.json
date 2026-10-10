@@ -6,6 +6,8 @@
   "layout": "page",
   "name": "jspassgen",
   "reading_time": 1,
+  "theme_color": "#10b981",
+  "theme_colour": "#10b981",
   "title": "About jspassgen | Security Architecture and Principles",
   "word_count": 117
 }

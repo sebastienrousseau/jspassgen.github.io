@@ -38,7 +38,7 @@
           <button class="btn-icon" id="btnRefresh" type="button" aria-label="Generate new password" title="Generate New">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
           </button>
-          <button class="btn-copy-main" id="btnCopy" type="button">
+          <button class="btn-copy-main" id="btnCopy" type="button" aria-label="Copy generated password to clipboard">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             <span>Copy</span>
           </button>
@@ -47,9 +47,9 @@
       
       <div class="strength-bar-container">
         <div class="strength-bar-track">
-          <div class="strength-bar-fill" id="strengthFill" style="width: 100%;"></div>
+          <div class="strength-bar-fill strength-quantum" id="strengthFill"></div>
         </div>
-        <div class="strength-label" id="strengthLabel">Quantum-Resistant</div>
+        <div class="strength-label text-quantum" id="strengthLabel">Quantum-Resistant</div>
       </div>
       
       <dl class="crypto-metrics-grid">
@@ -108,12 +108,12 @@
         </div>
       </div>
       
-      <div class="honeywords-preview" id="honeywordsBox" style="display: none;">
+      <div class="honeywords-preview is-hidden" id="honeywordsBox">
         <h4>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           Active Honeywords Decoy Set (Juels-Rivest Scheme)
         </h4>
-        <p style="margin: 0 0 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+        <p class="honeywords-intro">
           Store all credentials in your database. If any decoy is attempted during authentication, an immediate security alarm triggers before the genuine master key is breached.
         </p>
         <div class="honeywords-list" id="honeywordsList"></div>
@@ -148,7 +148,7 @@
         <tbody>
           <tr>
             <th scope="row">Architecture & Engine</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Hexagonal, 0-dep core</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Hexagonal, 0-dep core</td>
             <td>Monolithic web/app</td>
             <td>Proprietary SaaS</td>
             <td>Cloud-dependent</td>
@@ -158,113 +158,113 @@
           </tr>
           <tr>
             <th scope="row">Quantum-Resistant Mode</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Yes (Argon2id + HKDF)</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Yes (Argon2id + HKDF)</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
           </tr>
           <tr>
             <th scope="row">EFF Diceware Passphrases</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Full 7,776 wordlist</td>
-            <td><span class="icon-warn">~</span> Custom list</td>
-            <td><span class="icon-warn">~</span> Undisclosed</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-warn">~</span> Basic words</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Full 7,776 wordlist</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Custom list</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Undisclosed</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Basic words</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
           </tr>
           <tr>
             <th scope="row">Honeyword Decoys (Juels-Rivest)</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Built-in canary traps</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Built-in canary traps</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
           </tr>
           <tr>
             <th scope="row">Shannon Entropy Calculation</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> True mathematical H(X)</td>
-            <td><span class="icon-cross">✗</span> Estimated</td>
-            <td><span class="icon-cross">✗</span> Bar only</td>
-            <td><span class="icon-cross">✗</span> Weak/Strong</td>
-            <td><span class="icon-cross">✗</span> Bar only</td>
-            <td><span class="icon-cross">✗</span> Visual only</td>
-            <td><span class="icon-cross">✗</span> None</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> True mathematical H(X)</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Estimated</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Bar only</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Weak/Strong</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Bar only</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Visual only</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
           </tr>
           <tr>
             <th scope="row">Zero Runtime Dependencies</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> 0 dependencies</td>
-            <td><span class="icon-cross">✗</span> 50+ npm packages</td>
-            <td><span class="icon-cross">✗</span> Closed runtime</td>
-            <td><span class="icon-cross">✗</span> Heavy bundle</td>
-            <td><span class="icon-cross">✗</span> React bundle</td>
-            <td><span class="icon-cross">✗</span> Ad trackers</td>
-            <td><span class="icon-cross">✗</span> Bloated bundle</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> 0 dependencies</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> 50+ npm packages</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Closed runtime</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Heavy bundle</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> React bundle</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Ad trackers</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Bloated bundle</td>
           </tr>
           <tr>
             <th scope="row">Hardware Crack Simulation</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> 8x RTX 4090 cluster</td>
-            <td><span class="icon-cross">✗</span> None</td>
-            <td><span class="icon-cross">✗</span> None</td>
-            <td><span class="icon-cross">✗</span> None</td>
-            <td><span class="icon-cross">✗</span> None</td>
-            <td><span class="icon-cross">✗</span> None</td>
-            <td><span class="icon-cross">✗</span> None</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> 8x RTX 4090 cluster</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
           </tr>
           <tr>
             <th scope="row">CLI Tool Available</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> npx jspassgen</td>
-            <td><span class="icon-warn">~</span> Heavy vault CLI</td>
-            <td><span class="icon-warn">~</span> Paid CLI</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> npx jspassgen</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Heavy vault CLI</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Paid CLI</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
           </tr>
           <tr>
             <th scope="row">Clipboard Auto-Scrubbing TTL</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> 45s auto-wipe</td>
-            <td><span class="icon-warn">~</span> In-app only</td>
-            <td><span class="icon-warn">~</span> In-app only</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-warn">~</span> In-app only</td>
-            <td><span class="icon-cross">✗</span> No</td>
-            <td><span class="icon-cross">✗</span> No</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> 45s auto-wipe</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> In-app only</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> In-app only</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> In-app only</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> No</td>
           </tr>
           <tr>
             <th scope="row">Open Source License</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Dual Apache-2.0 / MIT</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Dual Apache-2.0 / MIT</td>
             <td>GPL-3.0</td>
-            <td><span class="icon-cross">✗</span> Proprietary</td>
-            <td><span class="icon-cross">✗</span> Proprietary</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Proprietary</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Proprietary</td>
             <td>GPL-3.0</td>
-            <td><span class="icon-cross">✗</span> Proprietary</td>
-            <td><span class="icon-cross">✗</span> Proprietary</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Proprietary</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Proprietary</td>
           </tr>
           <tr>
             <th scope="row">Analytics / Tracking Cookies</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Absolute Zero (0)</td>
-            <td><span class="icon-warn">~</span> Minimal</td>
-            <td><span class="icon-cross">✗</span> Segment, Mixpanel</td>
-            <td><span class="icon-cross">✗</span> Marketo, Google</td>
-            <td><span class="icon-warn">~</span> Self-hosted</td>
-            <td><span class="icon-cross">✗</span> 15+ ad trackers</td>
-            <td><span class="icon-cross">✗</span> Telemetry heavy</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Absolute Zero (0)</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Minimal</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Segment, Mixpanel</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Marketo, Google</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Self-hosted</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> 15+ ad trackers</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Telemetry heavy</td>
           </tr>
           <tr>
             <th scope="row">NIST SP 800-63B Alignment</th>
-            <td class="col-highlight"><span class="icon-check">✓</span> Strict verification</td>
-            <td><span class="icon-warn">~</span> Partial</td>
-            <td><span class="icon-warn">~</span> Partial</td>
-            <td><span class="icon-cross">✗</span> Outdated rules</td>
-            <td><span class="icon-warn">~</span> Partial</td>
-            <td><span class="icon-cross">✗</span> Incompatible</td>
-            <td><span class="icon-cross">✗</span> None</td>
+            <td class="col-highlight"><span class="icon-check" aria-hidden="true">✓</span><span class="sr-only">Supported:</span> Strict verification</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Partial</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Partial</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Outdated rules</td>
+            <td><span class="icon-warn" aria-hidden="true">~</span><span class="sr-only">Partial:</span> Partial</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> Incompatible</td>
+            <td><span class="icon-cross" aria-hidden="true">✗</span><span class="sr-only">Not supported:</span> None</td>
           </tr>
         </tbody>
       </table>
@@ -341,11 +341,11 @@
       <p>
         Run jspassgen directly via npx without installation, or install it globally to script secure password generation in CI/CD pipelines, DevOps workflows, and terminal environments.
       </p>
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-        <a href="https://www.npmjs.com/package/jspassgen" class="btn-copy-main" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
+      <div class="cli-actions">
+        <a href="https://www.npmjs.com/package/jspassgen" class="btn-copy-main" target="_blank" rel="noopener noreferrer">
           View on npm (0.0.19)
         </a>
-        <a href="https://github.com/sebastienrousseau/jspassgen" class="btn-header-cli" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/sebastienrousseau/jspassgen" class="btn-header-cli btn-cli-ghost" target="_blank" rel="noopener noreferrer">
           Read CLI Documentation
         </a>
       </div>
@@ -356,20 +356,20 @@
         <span class="terminal-dot red"></span>
         <span class="terminal-dot yellow"></span>
         <span class="terminal-dot green"></span>
-        <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #94a3b8; margin-left: auto;">bash - jspassgen</span>
+        <span class="terminal-badge">bash - jspassgen</span>
       </div>
       <div class="terminal-body">
         <pre><span class="cmd-comment"># Instant generation with npx</span>
 $ npx jspassgen -l 32 --symbols
 
 <span class="cmd-output">✓ Generated high-entropy password:</span>
-<span style="color: #f8fafc; font-weight: 700;">k9#vM8$wP2!zQ5@xR7^yN1*tL4&jF6%h</span>
+<span class="cmd-highlight">k9#vM8$wP2!zQ5@xR7^yN1*tL4&amp;jF6%h</span>
 <span class="cmd-comment">Entropy: 190.4 bits | Pool: 94 | TTL: 45s</span>
 
 <span class="cmd-comment"># EFF Diceware passphrase</span>
 $ npx jspassgen --diceware -w 5 --separator "-"
 <span class="cmd-output">✓ Generated passphrase:</span>
-<span style="color: #f8fafc; font-weight: 700;">correct-horse-battery-staple-quantum42</span></pre>
+<span class="cmd-highlight">correct-horse-battery-staple-quantum42</span></pre>
       </div>
     </div>
   </div>
@@ -378,10 +378,10 @@ $ npx jspassgen --diceware -w 5 --separator "-"
 <!-- Frequently Asked Questions -->
 <section class="faq-section" id="faq">
   <div class="container">
-    <div style="text-align: center; margin-bottom: 3rem;">
+    <div class="faq-header">
       <div class="section-eyebrow">Technical Clarifications</div>
       <h2 class="section-heading">Frequently Asked Questions</h2>
-      <p class="section-lead" style="margin: 0 auto;">
+      <p class="section-lead faq-lead">
         Everything you need to know about the cryptography, offline privacy, and security model of jspassgen.
       </p>
     </div>
@@ -392,7 +392,7 @@ $ npx jspassgen --diceware -w 5 --separator "-"
           <span>Are passwords generated by jspassgen sent to any server?</span>
           <span aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer" style="display: none;">
+        <div class="faq-answer">
           <p>
             No. Absolutely nothing leaves your machine. jspassgen executes 100% locally inside your browser using the W3C Web Cryptography API (<code>window.crypto.getRandomValues</code>) or Node.js native <code>crypto</code> module. There are no analytics trackers, no telemetry pings, and no database logs.
           </p>
@@ -404,7 +404,7 @@ $ npx jspassgen --diceware -w 5 --separator "-"
           <span>What is the difference between standard passwords and EFF Diceware passphrases?</span>
           <span aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer" style="display: none;">
+        <div class="faq-answer">
           <p>
             Standard random passwords draw uniformly from character alphabets (uppercase, lowercase, numbers, symbols) to maximize entropy density per character. EFF Diceware passphrases draw random words from the curated 7,776-word dictionary compiled by the Electronic Frontier Foundation. A 5-word Diceware passphrase provides approximately 65 bits of entropy and is exceptionally easy for humans to type and remember, while remaining immune to brute-force dictionary attacks.
           </p>
@@ -416,9 +416,9 @@ $ npx jspassgen --diceware -w 5 --separator "-"
           <span>How does Honeywords decoy generation protect against database breaches?</span>
           <span aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer" style="display: none;">
+        <div class="faq-answer">
           <p>
-            Invented by cryptographic researchers Ari Juels and Ronald L. Rivest, the Honeywords defense stores $k-1$ decoy passwords alongside the genuine password in a hashed credential store. To an external attacker who dumps the database and cracks the hashes, all $k$ passwords appear equally valid. When the attacker attempts to authenticate with any decoy password, a canary trap immediately alerts security operations and freezes the compromised account before the attacker can test the real password.
+            Invented by cryptographic researchers Ari Juels and Ronald L. Rivest, the Honeywords defense stores <code>k - 1</code> decoy passwords alongside the genuine password in a hashed credential store. To an external attacker who dumps the database and cracks the hashes, all <code>k</code> passwords appear equally valid. When the attacker attempts to authenticate with any decoy password, a canary trap immediately alerts security operations and freezes the compromised account before the attacker can test the real password.
           </p>
         </div>
       </div>
@@ -428,9 +428,9 @@ $ npx jspassgen --diceware -w 5 --separator "-"
           <span>Why is Shannon Entropy more accurate than a simple character count?</span>
           <span aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer" style="display: none;">
+        <div class="faq-answer">
           <p>
-            Naive password meters simply count length or reward predictable patterns like adding an exclamation mark at the end. Claude Shannon's information entropy formula $H(X) = -\sum p(x) \log_2 p(x)$ measures the exact uncertainty and unpredictability of the symbol probability distribution. This reveals whether a password has true cryptographic variance or repetitive bias.
+            Naive password meters simply count length or reward predictable patterns like adding an exclamation mark at the end. Claude Shannon's information entropy formula <code class="math-expr">H(X) = -∑ p(x) log₂(p(x))</code> measures the exact uncertainty and unpredictability of the symbol probability distribution. This reveals whether a password has true cryptographic variance or repetitive bias.
           </p>
         </div>
       </div>

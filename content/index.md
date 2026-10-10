@@ -12,6 +12,7 @@ schema: "SoftwareApplication"
 changefreq: "daily"
 copyright_year: "2026"
 theme_style: "style-dark"
+theme_color: "#10b981"
 theme_colour: "#10b981"
 ---
 

@@ -6,6 +6,8 @@
   "layout": "404",
   "name": "jspassgen",
   "reading_time": 1,
+  "theme_color": "#10b981",
+  "theme_colour": "#10b981",
   "title": "Page Not Found | jspassgen",
   "word_count": 14
 }

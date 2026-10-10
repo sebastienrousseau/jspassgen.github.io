@@ -6,6 +6,8 @@ author: "Sebastien Rousseau"
 date: "2026-10-10"
 layout: "page"
 language: "en-GB"
+theme_color: "#10b981"
+theme_colour: "#10b981"
 ---
 
 # About jspassgen
