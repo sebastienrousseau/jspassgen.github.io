@@ -206,10 +206,59 @@
   function calculateCrackTime(entropy) {
     if (entropy < 40) return "Instant";
     if (entropy < 60) return "Few hours";
-    if (entropy < 80) return "Few months";
-    if (entropy < 100) return "Decades";
-    if (entropy < 120) return "Millennia";
-    return "Centuries (Quantum-Proof)";
+    if (entropy < 80) return "Centuries";
+    if (entropy < 100) return "Cosmic Age";
+    if (entropy < 120) return "Planetary Scale";
+    return "Quantum-Proof";
+  }
+
+  function updateSearchSpaceVisualizer(mode, length, poolSize, entropy) {
+    var eqEl = document.getElementById("searchSpaceEquation");
+    var expEl = document.getElementById("searchSpaceExplainer");
+    var s1 = document.getElementById("seg1");
+    var s2 = document.getElementById("seg2");
+    var s3 = document.getElementById("seg3");
+    var s4 = document.getElementById("seg4");
+    var s5 = document.getElementById("seg5");
+
+    var effectiveLength = length;
+    var effectivePool = poolSize;
+
+    if (mode === "diceware") {
+      var wordCount = Math.max(3, Math.min(12, Math.round(length / 4)));
+      effectiveLength = wordCount;
+      effectivePool = EFF_WORDS.length;
+    } else if (mode === "quantum") {
+      effectiveLength = Math.max(32, length);
+    }
+
+    var log10Total = effectiveLength * Math.log10(effectivePool);
+    var exponent = Math.floor(log10Total);
+    var mantissa = Math.pow(10, log10Total - exponent).toFixed(1);
+
+    if (eqEl) {
+      eqEl.innerHTML = effectivePool + "<sup>" + effectiveLength + "</sup> ≈ " + mantissa + " × 10<sup>" + exponent + "</sup> combinations";
+    }
+
+    if (s1) s1.classList.toggle("is-active", entropy >= 35);
+    if (s2) s2.classList.toggle("is-active", entropy >= 65);
+    if (s3) s3.classList.toggle("is-active", entropy >= 90);
+    if (s4) s4.classList.toggle("is-active", entropy >= 120);
+    if (s5) s5.classList.toggle("is-active", entropy >= 140);
+
+    if (expEl) {
+      if (entropy < 50) {
+        expEl.innerHTML = "At " + effectiveLength + (mode === "diceware" ? " words" : " characters") + " (" + entropy + " bits), modern GPU cracking rigs (e.g. RTX 4090 clusters) can exhaust the ~" + mantissa + " × 10<sup>" + exponent + "</sup> search space in seconds to minutes.";
+      } else if (entropy < 75) {
+        expEl.innerHTML = "At " + effectiveLength + (mode === "diceware" ? " words" : " characters") + " (" + entropy + " bits), exhausting the ~" + mantissa + " × 10<sup>" + exponent + "</sup> combinations requires centuries of compute time at 100 billion guesses per second.";
+      } else if (entropy < 105) {
+        expEl.innerHTML = "At " + effectiveLength + (mode === "diceware" ? " words" : " characters") + " (" + entropy + " bits), the search space reaches ~" + mantissa + " × 10<sup>" + exponent + "</sup>. Cracking requires millions of years, far outlasting recorded human civilization.";
+      } else if (entropy < 135) {
+        expEl.innerHTML = "At " + effectiveLength + (mode === "diceware" ? " words" : " characters") + " (" + entropy + " bits), the search space expands to ~" + mantissa + " × 10<sup>" + exponent + "</sup> combinations. Cracking energy exceeds the thermal output of planet Earth.";
+      } else {
+        expEl.innerHTML = "At " + effectiveLength + (mode === "diceware" ? " words" : " characters") + " (" + entropy + " bits), the search space exceeds ~" + mantissa + " × 10<sup>" + exponent + "</sup> permutations. Resistant against Grover quantum search algorithms; exceeds estimated atoms in the galaxy.";
+      }
+    }
   }
 
   function refreshPassword() {
@@ -270,6 +319,8 @@
 
     var valCrackTime = document.getElementById("valCrackTime");
     if (valCrackTime) valCrackTime.textContent = calculateCrackTime(entropy);
+
+    updateSearchSpaceVisualizer(currentMode, length, result.poolSize, entropy);
 
     var strengthFill = document.getElementById("strengthFill");
     var strengthLabel = document.getElementById("strengthLabel");
