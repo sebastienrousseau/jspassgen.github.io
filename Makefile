@@ -1,29 +1,31 @@
-SSG ?= $(shell command -v ssg 2>/dev/null || echo /Users/seb/Code/Public/Rust/static-site-generator/target/release/ssg)
-
-.PHONY: all build clean check
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+.PHONY: all build serve screenshot clean help
 
 all: build
 
-build:
-	$(SSG) build -f ssg.toml
-	@mkdir -p docs/images docs/assets docs/.well-known
-	@cp -f CNAME docs/CNAME 2>/dev/null || true
-	@cp -f .nojekyll docs/.nojekyll 2>/dev/null || true
-	@cp -rf images/* docs/images/ 2>/dev/null || true
-	@cp -f assets/logo.svg docs/assets/logo.svg 2>/dev/null || true
-	@cp -f favicon.svg docs/favicon.svg 2>/dev/null || true
-	@cp -f llms.txt docs/llms.txt 2>/dev/null || true
-	@cp -f llms-full.txt docs/llms-full.txt 2>/dev/null || true
-	@cp -f openapi.json docs/openapi.json 2>/dev/null || true
-	@cp -f .well-known/agents.json docs/.well-known/agents.json 2>/dev/null || true
-	@cp -f .well-known/security.txt docs/.well-known/security.txt 2>/dev/null || true
-	@cp -f robots.txt docs/robots.txt 2>/dev/null || true
-	@sed -i '' 's/"theme_color": null/"theme_color": "#2455e8"/g' docs/manifest.json docs/*/manifest.json 2>/dev/null || true
-	@sed -i '' 's/"short_name": null/"short_name": "jspassgen"/g' docs/manifest.json docs/*/manifest.json 2>/dev/null || true
-	@python3 scripts/clean_sitemaps.py
+help:
+	@echo "make build  - build the site into docs/ and run every check"
+	@echo "make serve  - build, then serve docs/ on http://127.0.0.1:8000"
+	@echo "make screenshot - render static/images/screenshot.png from the build"
+	@echo "make clean  - remove build output"
 
-check:
-	$(SSG) check -f ssg.toml
+# contrast.py gates the colour tokens (WCAG AAA text, 3:1 UI); ssg's own
+# quality gate runs inside post-build.py; `ssg audit` then checks
+# the final files (WCAG, JSON-LD, CSP/SRI, links, metadata, feeds...).
+build:
+	rm -rf docs
+	python3 scripts/contrast.py
+	ssg build -f ssg.toml -q
+	python3 scripts/anchor_headings.py docs
+	python3 scripts/post-build.py
+	python3 scripts/og_images.py
+	ssg audit -o docs -f ssg.toml --skip-network
+
+serve: build
+	python3 -m http.server 8000 --bind 127.0.0.1 --directory docs
+
+screenshot: build
+	scripts/screenshot.sh
 
 clean:
-	rm -rf docs/*.html docs/sitemap.xml docs/manifest.json
+	rm -rf docs public .cache

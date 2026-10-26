@@ -1,1 +1,0 @@
-(function(){var root=document.documentElement;root.classList.remove('no-js');try{var saved=localStorage.getItem('jspassgen-theme')||localStorage.getItem('theme');if(saved==='dark'||saved==='light'){root.setAttribute('data-theme',saved);root.setAttribute('data-theme-mode',saved);}}catch(error){}})();

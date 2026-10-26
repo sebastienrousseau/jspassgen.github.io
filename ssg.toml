@@ -1,14 +1,18 @@
-# Configuration for jspassgen.com
+# Site configuration for jspassgen.com, built with `make build`.
+# The paths are relative to the repository root.
+
 site_name = "jspassgen"
-site_title = "jspassgen | Quantum-Resistant Password and Passphrase Generator"
-site_description = "Zero-dependency, quantum-resistant password and EFF Diceware passphrase generator with Shannon entropy scoring, honeyword decoys, and client-side WebCrypto security."
+site_title = "jspassgen: password and passphrase generator for Node.js"
+site_description = "jspassgen generates passwords and passphrases from the platform's cryptographic random source, as a command-line tool and a Node.js library, with eight generation types and an entropy estimate for each result."
 base_url = "https://jspassgen.com"
 language = "en-GB"
 
-content_dir = "content"
+content_dir = "_posts"
 template_dir = "_layouts"
 output_dir = "docs"
 
+# Agentic discovery: /agents.txt, /.well-known/ai-plugin.json and
+# /.well-known/mcp.json. Permissive, because the site exists to be read.
 [agents]
 agents_txt = true
 ai_plugin = true
@@ -16,5 +20,7 @@ ai_plugin = true
 [agents.mcp]
 enabled = true
 
+# Security headers for hosts that read `_headers`. GitHub Pages ignores the
+# file; it is kept so the same build deploys elsewhere with the headers.
 [edge_headers]
-targets = ["cloudflare", "netlify", "vercel"]
+targets = ["netlify", "cloudflare"]
