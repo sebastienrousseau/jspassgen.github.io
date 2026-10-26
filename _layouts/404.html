@@ -1,10 +1,13 @@
-{{#extends "base"}}{{#block "main"}}
-<div class="container not-found-container">
-  <p class="section-eyebrow">404 Error</p>
-  <h1 class="hero-title">Page Not Found</h1>
-  <p class="hero-lead">The requested security resource or document could not be located.</p>
-  <div class="not-found-actions">
-    <a href="/" class="btn-copy-main not-found-btn">Return to Password Generator</a>
+{{#extends "base"}}
+{{#block "main"}}
+<section class="section">
+  <div class="container narrow stack text-center">
+    <p class="eyebrow">{{eyebrow}}</p>
+    <h1>{{headline}}</h1>
+    <p class="lead mx-auto">{{lead}}</p>
+    <div class="cta-row cta-row-centred">
+      <a class="btn btn-primary" href="{{site_path}}">Go to the home page</a>
+    </div>
   </div>
-</div>
+</section>
 {{/block}}

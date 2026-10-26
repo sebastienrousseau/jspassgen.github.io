@@ -1,48 +1,58 @@
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="{{locale_path}}">
-        <img src="/images/logo.svg" alt="jspassgen logo" width="28" height="28" />
-        <span>jspassgen</span>
-      </a>
-      <p>Zero-dependency, quantum-resistant password and EFF Diceware passphrase generator for developers, security engineers, and privacy-conscious users.</p>
+  <div class="container">
+    <div class="footer-cols">
+      <div>
+        <h2>Features</h2>
+        <ul>
+          <li><a href="{{site_path}}features/#eight-password-types">Password types</a></li>
+          <li><a href="{{site_path}}features/#presets">Presets</a></li>
+          <li><a href="{{site_path}}features/#an-entropy-estimate-for-every-result">Entropy estimate</a></li>
+          <li><a href="{{site_path}}features/#honeywords">Honeywords</a></li>
+          <li><a href="{{site_path}}features/#bulk-output-in-json-csv-and-yaml">Bulk output</a></li>
+          <li><a href="{{site_path}}features/#cryptographic-random-source">Random source</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Docs</h2>
+        <ul>
+          <li><a href="{{site_path}}getting-started/">Getting started</a></li>
+          <li><a href="{{site_path}}documentation/">CLI and API reference</a></li>
+          <li><a href="{{site_path}}migration/">Migration</a></li>
+          <li><a href="https://sebastienrousseau.com/jspassgen/">Web version</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="{{site_path}}about/">About</a></li>
+          <li><a href="{{site_path}}security/">Security</a></li>
+          <li><a href="{{site_path}}changelog/">Changelog</a></li>
+          <li><a href="{{site_path}}contribute/">Contributing</a></li>
+          <li><a href="{{site_path}}faqs/">FAQ</a></li>
+          <li><a href="https://www.npmjs.com/package/@sebastienrousseau/jspassgen">jspassgen on npm</a></li>
+          <li><a href="https://github.com/sebastienrousseau/jspassgen">Source on GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Site</h2>
+        <ul>
+          <li><a href="{{site_path}}about/#how-do-i-get-in-touch">Contact</a></li>
+          <li><a href="{{site_path}}accessibility/">Accessibility</a></li>
+          <li><a href="{{site_path}}privacy/">Privacy</a></li>
+          <li><a href="{{site_path}}terms/">Terms</a></li>
+          <li><a href="{{site_path}}made-with-ssg/">Colophon</a></li>
+          <li><a href="{{site_path}}rss.xml">RSS</a></li>
+          <li><a href="{{site_path}}sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
     </div>
-    
-    <div class="footer-col">
-      <p class="footer-col-title">Core Features</p>
-      <ul>
-        <li><a href="{{locale_path}}#tab-random">Random Passwords</a></li>
-        <li><a href="{{locale_path}}#tab-diceware">EFF Diceware</a></li>
-        <li><a href="{{locale_path}}#tab-quantum">Quantum Resistance</a></li>
-        <li><a href="{{locale_path}}#tab-honeywords">Honeyword Decoys</a></li>
-        <li><a href="{{locale_path}}#searchSpaceShowcase">Shannon Entropy</a></li>
-      </ul>
+
+    <div class="footer-bottom">
+      <p class="footer-note">
+        © 2026 <a href="https://sebastienrousseau.com/" rel="author">Sebastien Rousseau</a>.
+        jspassgen is free software under the Apache License 2.0 or the MIT licence, at your option.
+      </p>
+      <p class="footer-credit">Made with ❤️ in London. Built with <a class="made-with-ssg" href="https://static-site-generator.com/">SSG</a> and <a href="https://skeletonic.com/">Skeletonic CSS</a>.</p>
     </div>
-    
-    <div class="footer-col">
-      <p class="footer-col-title">Ecosystem</p>
-      <ul>
-        <li><a href="https://www.npmjs.com/package/jspassgen" target="_blank" rel="noopener noreferrer">npm Registry</a></li>
-        <li><a href="https://github.com/sebastienrousseau/jspassgen" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
-        <li><a href="https://github.com/sebastienrousseau/jspassgen/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
-        <li><a href="/llms.txt">llms.txt (AI Specification)</a></li>
-        <li><a href="/.well-known/agents.json">agents.json</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-col">
-      <p class="footer-col-title">Security & Standards</p>
-      <ul>
-        <li><a href="https://github.com/sebastienrousseau/jspassgen/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer">Security Policy</a></li>
-        <li><a href="https://github.com/sebastienrousseau/jspassgen/blob/main/LICENSE-MIT" target="_blank" rel="noopener noreferrer">MIT License</a></li>
-        <li><a href="https://github.com/sebastienrousseau/jspassgen/blob/main/LICENSE-APACHE" target="_blank" rel="noopener noreferrer">Apache-2.0 License</a></li>
-        <li><a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a></li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="container footer-bottom">
-    <p>© 2026 <a href="https://sebastienrousseau.com/" rel="author">Sebastien Rousseau</a>. Dual licensed under Apache-2.0 and MIT.</p>
-    <p class="fine-print footer-credit">Made with ❤️ in London. Built with <a class="made-with-ssg" href="https://static-site-generator.com/">SSG</a> and <a href="https://skeletonic.com/">Skeletonic CSS</a>.</p>
   </div>
 </footer>
