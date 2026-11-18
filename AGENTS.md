@@ -13,7 +13,7 @@ the npm registry.
 - Content lives in `_posts/`, layouts in `_layouts/`. `docs/` is build
   output: never edit or commit it.
 - Facts about jspassgen come from its source, README, CHANGELOG and
-  SECURITY.md (default branch `master`), or from the npm registry. Leave
+  SECURITY.md (default branch `main`), or from the npm registry. Leave
   out anything you cannot check.
 - Colours are tokens in `_layouts/styles.css`; `scripts/contrast.py`
   holds text to 7:1 and UI to 3:1 in light and dark mode.
