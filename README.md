@@ -16,7 +16,7 @@
   <a href="https://jspassgen.com/documentation/"><img src="https://img.shields.io/badge/docs-jspassgen.com-66c2a5?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/jspassgen.github.io"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/jspassgen.github.io?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
   <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
-  <a href="#requirements"><img src="https://img.shields.io/badge/ssg-0.0.69%2B-93450a.svg?style=for-the-badge&logo=rust" alt="ssg 0.0.69 or newer" height="28" /></a>
+  <a href="#requirements"><img src="https://img.shields.io/badge/ssg-0.0.76-93450a.svg?style=for-the-badge&logo=rust" alt="ssg 0.0.76" height="28" /></a>
 </p>
 
 <p align="center">
@@ -79,16 +79,17 @@ git clone https://github.com/sebastienrousseau/jspassgen.github.io.git
 cd jspassgen.github.io
 ```
 
-Install `ssg` 0.0.69 or newer from its
+Install the latest `ssg` (0.0.76) from its
 [releases](https://github.com/sebastienrousseau/static-site-generator/releases)
-or with `cargo install ssg`.
+or with `cargo install ssg --locked`.
 
 ---
 
 ## Requirements
 
-- ssg 0.0.69 or newer on `PATH`. CI installs the 0.0.69 release and checks
-  the archive against a pinned SHA-256.
+- The latest ssg, 0.0.76, on `PATH`. CI installs the 0.0.76 release and
+  checks the archive against a pinned SHA-256; the pin moves up when a
+  newer ssg ships.
 - Python 3.11 or newer, for the build scripts (they use `tomllib`).
 - Chrome or Chromium, for the per-page social images in `make build` and
   for `make screenshot`. Set `CHROME` to choose the binary. On macOS with

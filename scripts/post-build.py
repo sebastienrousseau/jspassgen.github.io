@@ -142,7 +142,7 @@ def main() -> None:
         print("SRI check failed:\n  " + "\n  ".join(sri), file=sys.stderr)
         sys.exit(1)
     report = json.loads((OUT / "quality-gate-report.json").read_text(encoding="utf-8"))
-    # Every pillar must pass. ssg 0.0.69's SRI pillar misreads an
+    # Every pillar must pass. ssg's SRI pillar (0.0.69 to 0.0.76) misreads an
     # apostrophe in an HTML comment in <head> as an opening quote, so
     # base.html keeps its head comments free of them.
     issues = [f"{name}: {issue}" for name, p in report["pillars"].items() for issue in p["issues"]]
