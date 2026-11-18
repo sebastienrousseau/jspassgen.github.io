@@ -45,8 +45,11 @@ the calculation.
 ## What about the clipboard?
 
 `-c` writes the password to the system clipboard, where other programs on
-the machine can read it until it is overwritten. Clear it yourself when you
-have pasted the password.
+the machine can read it. Since 0.0.22, jspassgen clears it after 45 seconds
+if the clipboard still holds that password; versions up to 0.0.21 never
+cleared it
+([GHSA-w3f5-33xf-fq99](https://github.com/sebastienrousseau/jspassgen/security/advisories/GHSA-w3f5-33xf-fq99)). Paste the password before then, or clear
+the clipboard yourself sooner.
 
 ## How do I report a vulnerability?
 
