@@ -2,8 +2,8 @@
 name: "jspassgen"
 short_name: "jspassgen"
 title: "Changelog: recent jspassgen releases | jspassgen"
-description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
-keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.21"
+description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the clipboard clear and in-memory web history fixes, the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
+keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.22"
 author: "Sebastien Rousseau"
 date: "2026-10-26"
 news_publication_date: "2026-10-26"
@@ -15,6 +15,31 @@ eyebrow: "Changelog"
 headline: "Recent releases"
 lead: "A summary of the jspassgen CHANGELOG. The full file, with every release, is in the repository."
 ---
+## 0.0.22, 18 November 2026
+
+- **Clipboard clear:** `--clipboard` promised to wipe the copied password
+  after 45 seconds, but the wipe never ran, because the process exited
+  first. A detached process now does it: it receives only a SHA-256 digest
+  of the password and clears the clipboard after 45 seconds if it still
+  holds that password
+  ([GHSA-w3f5-33xf-fq99](https://github.com/sebastienrousseau/jspassgen/security/advisories/GHSA-w3f5-33xf-fq99)).
+- **Web history in memory:** the web version kept the last five generated
+  passwords in `localStorage` in plain text, where they outlived the
+  browser session. The history is now kept in memory only, and the old
+  `jspassgen_history` key is deleted
+  ([GHSA-mhc2-hmv6-4fc9](https://github.com/sebastienrousseau/jspassgen/security/advisories/GHSA-mhc2-hmv6-4fc9)).
+- **Node.js adapters:** `createNodeAdapters()` threw `ReferenceError` on
+  every call, and `adapters/node` did not export the EFF word list. It now
+  exports `EFFDicewareDictionary`, and `createNodeAdapters()` works and
+  includes it as `dictionary`.
+- **Core metadata:** the core's `package.json` inside the npm package now
+  declares `Apache-2.0 OR MIT`, Node.js 22 and the suite version, instead
+  of MIT alone, Node.js 18 and 0.0.1.
+- **Command name:** the usage line, banners and tips say `jspassgen`;
+  `password-generator` still runs as an older alias.
+- **OpenSSF Scorecard:** a Scorecard workflow now publishes results weekly
+  and on every push to `main`, so the README badge has data.
+
 ## 0.0.21, 18 November 2026
 
 - **Web word list:** the web version and the Web Worker built the core

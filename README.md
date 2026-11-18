@@ -57,15 +57,6 @@
 
 ---
 
-## Development version
-
-`VERSION` reads 0.0.22. The site joins the jspassgen suite's lockstep
-release at the family's version: it has never been tagged, so its first
-tag is `v0.0.22`, not `v0.0.1`. jspassgen.com is deployed from `main` on
-every push, not from a tag.
-
----
-
 ## Install
 
 ### As a JavaScript library
@@ -135,10 +126,11 @@ conformance kit as its generators land.
 | [`jspassgen-sdk-cpp`](https://github.com/sebastienrousseau/jspassgen-sdk-cpp) | Native C++17 port on the OS CSPRNG | C++ programs |
 | **`jspassgen.github.io`** | Source of [jspassgen.com](https://jspassgen.com) | Evaluating the suite |
 
-Only `@sebastienrousseau/jspassgen` is on a package registry so far
-(0.0.21 on npm). The table gives each member's purpose; the other members
-are early, each README's Capabilities at a glance says what works today,
-and they first publish with the suite's first lockstep release.
+Every member ships at 0.0.22, the suite's first lockstep release: the
+core, CLI, MCP and LSP servers on npm, the Python, Rust, Java and .NET
+SDKs on PyPI, crates.io, Maven Central and NuGet, and the C++ SDK and
+the site as GitHub releases. The table gives each member's purpose, and
+each README's Capabilities at a glance says what works today.
 
 ---
 

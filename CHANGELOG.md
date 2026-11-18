@@ -4,7 +4,7 @@
 
 All notable changes to jspassgen.com are documented here.
 
-## [0.0.22] - Unreleased
+## [0.0.22] - 2026-11-18
 
 ### Changed
 
@@ -22,6 +22,10 @@ All notable changes to jspassgen.com are documented here.
   version, `softwareVersion`, the latest release on the about page, the
   reference page, a changelog entry for 0.0.21, and the home page cards and
   the honeyword example regenerated from the 0.0.21 command line.
+- Facts moved to jspassgen 0.0.22, released 18 November 2026: the npm
+  version, `softwareVersion`, the latest release on the about page, the
+  reference page's lead and a changelog entry for 0.0.22. The home page
+  cards stay the output of the 0.0.21 command line, as they say.
 - The web version links to doc.jspassgen.com, where
   sebastienrousseau.com/jspassgen now redirects, and the changelog and
   contributing pages name jspassgen's default branch, `main`.
