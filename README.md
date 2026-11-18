@@ -16,7 +16,7 @@
   <a href="https://jspassgen.com/documentation/"><img src="https://img.shields.io/badge/docs-jspassgen.com-66c2a5?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/jspassgen.github.io"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/jspassgen.github.io?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
   <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
-  <a href="#requirements"><img src="https://img.shields.io/badge/ssg-0.0.69%2B-93450a.svg?style=for-the-badge&logo=rust" alt="ssg 0.0.69 or newer" height="28" /></a>
+  <a href="#requirements"><img src="https://img.shields.io/badge/ssg-0.0.76-93450a.svg?style=for-the-badge&logo=rust" alt="ssg 0.0.76" height="28" /></a>
 </p>
 
 <p align="center">
@@ -57,14 +57,6 @@
 
 ---
 
-## Development version
-
-`VERSION` reads 0.0.2 and this repository has never been tagged. This
-branch prepares the site for the jspassgen suite's first lockstep release;
-jspassgen.com is deployed from `main` on every push, not from a tag.
-
----
-
 ## Install
 
 ### As a JavaScript library
@@ -79,16 +71,17 @@ git clone https://github.com/sebastienrousseau/jspassgen.github.io.git
 cd jspassgen.github.io
 ```
 
-Install `ssg` 0.0.69 or newer from its
+Install the latest `ssg` (0.0.76) from its
 [releases](https://github.com/sebastienrousseau/static-site-generator/releases)
-or with `cargo install ssg`.
+or with `cargo install ssg --locked`.
 
 ---
 
 ## Requirements
 
-- ssg 0.0.69 or newer on `PATH`. CI installs the 0.0.69 release and checks
-  the archive against a pinned SHA-256.
+- The latest ssg, 0.0.76, on `PATH`. CI installs the 0.0.76 release and
+  checks the archive against a pinned SHA-256; the pin moves up when a
+  newer ssg ships.
 - Python 3.11 or newer, for the build scripts (they use `tomllib`).
 - Chrome or Chromium, for the per-page social images in `make build` and
   for `make screenshot`. Set `CHROME` to choose the binary. On macOS with
@@ -133,10 +126,11 @@ conformance kit as its generators land.
 | [`jspassgen-sdk-cpp`](https://github.com/sebastienrousseau/jspassgen-sdk-cpp) | Native C++17 port on the OS CSPRNG | C++ programs |
 | **`jspassgen.github.io`** | Source of [jspassgen.com](https://jspassgen.com) | Evaluating the suite |
 
-Only `@sebastienrousseau/jspassgen` is on a package registry so far
-(0.0.21 on npm). The table gives each member's purpose; the other members
-are early, each README's Capabilities at a glance says what works today,
-and they first publish with the suite's first lockstep release.
+Every member ships at 0.0.22, the suite's first lockstep release: the
+core, CLI, MCP and LSP servers on npm, the Python, Rust, Java and .NET
+SDKs on PyPI, crates.io, Maven Central and NuGet, and the C++ SDK and
+the site as GitHub releases. The table gives each member's purpose, and
+each README's Capabilities at a glance says what works today.
 
 ---
 
@@ -219,7 +213,12 @@ make clean       # remove build output
 
 `.github/workflows/quality-gate.yml` runs `make build` on every pull
 request into `main`. `.github/workflows/pages.yml` runs it on every push to
-`main` and deploys `docs/` to GitHub Pages.
+`main` and deploys `docs/` to GitHub Pages. `.github/workflows/release.yml`
+runs on a pushed `v<version>` tag: `scripts/check-release-tag.sh` checks
+that the tag is signed, annotated with `jspassgen.github.io v<version>`,
+matches `VERSION` and points at the built commit; the workflow then runs
+`make build` and drafts the GitHub release `jspassgen.github.io <version>`
+with a tarball of the built site and its SHA-256.
 
 ---
 

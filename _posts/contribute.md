@@ -41,7 +41,7 @@ npm run verify:core  # the core package imports nothing from outside
 ## How do I send a change?
 
 Fork the repository, make your change on a branch, run the checks above and
-open a pull request against the `master` branch. Keep the core package free
+open a pull request against the `main` branch. Keep the core package free
 of dependencies: it must run anywhere the ports are provided.
 
 ## What about this website?

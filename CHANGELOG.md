@@ -4,12 +4,31 @@
 
 All notable changes to jspassgen.com are documented here.
 
-## [0.0.2] - Unreleased
+## [0.0.22] - 2026-11-18
 
 ### Changed
 
-- Rebuilt the site with Static Site Generator 0.0.69 and the Prism theme,
+- The site joins the jspassgen suite's lockstep release at the family's
+  version, 0.0.22, as its first tagged release; `VERSION` reads 0.0.22.
+- Rebuilt the site with Static Site Generator and the Prism theme,
   coloured from the jspassgen logo, replacing the October 2026 site.
+- Builds with ssg 0.0.76, the latest release: CI installs it and checks
+  the archive against its published SHA-256. ssg's SRI check still misreads
+  an apostrophe in a `<head>` comment, so `base.html` keeps them out.
+- `jspassgen` is presented as the command everywhere; `password-generator`
+  is described as an older alias of the same command, which the package
+  still installs.
+- Facts moved to jspassgen 0.0.21, released 18 November 2026: the npm
+  version, `softwareVersion`, the latest release on the about page, the
+  reference page, a changelog entry for 0.0.21, and the home page cards and
+  the honeyword example regenerated from the 0.0.21 command line.
+- Facts moved to jspassgen 0.0.22, released 18 November 2026: the npm
+  version, `softwareVersion`, the latest release on the about page, the
+  reference page's lead and a changelog entry for 0.0.22. The home page
+  cards stay the output of the 0.0.21 command line, as they say.
+- The web version links to doc.jspassgen.com, where
+  sebastienrousseau.com/jspassgen now redirects, and the changelog and
+  contributing pages name jspassgen's default branch, `main`.
 - Rewrote every page from the jspassgen repository at version 0.0.21:
   the site now describes the command-line tool and the Node.js library as
   they ship, under the `@sebastienrousseau/jspassgen` package name, and
@@ -19,6 +38,14 @@ All notable changes to jspassgen.com are documented here.
   gate at 10/10, verifies every `#fragment` and SRI hash, renders one social
   image per page and runs `ssg audit`; the Pages workflow builds and deploys
   the result instead of uploading committed output.
+
+### Added
+
+- A release workflow: on a signed `v<version>` tag annotated
+  `jspassgen.github.io v<version>` and matching `VERSION`, it builds the
+  site and drafts the GitHub release with a tarball of `docs/` and its
+  SHA-256.
+- Dependabot updates for the pinned workflow actions.
 
 ### Removed
 

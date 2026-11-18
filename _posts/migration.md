@@ -29,8 +29,8 @@ npm uninstall -g jspassgen
 npm install -g @sebastienrousseau/jspassgen
 ```
 
-The `jspassgen` and `password-generator` commands and their options are the
-same.
+The `jspassgen` command and its options are the same. The older
+`password-generator` alias of the same command is still installed.
 
 ## How do I update a project?
 

@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+#
+# Weekly updates of the pinned workflow actions. Each Dependabot PR is
+# folded into the active feat/v<next-version> branch and then closed,
+# never merged into main (~/Code/AGENTS.md, Branch Funneling).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
