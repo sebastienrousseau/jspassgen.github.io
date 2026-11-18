@@ -59,9 +59,10 @@
 
 ## Development version
 
-`VERSION` reads 0.0.2 and this repository has never been tagged. This
-branch prepares the site for the jspassgen suite's first lockstep release;
-jspassgen.com is deployed from `main` on every push, not from a tag.
+`VERSION` reads 0.0.22. The site joins the jspassgen suite's lockstep
+release at the family's version: it has never been tagged, so its first
+tag is `v0.0.22`, not `v0.0.1`. jspassgen.com is deployed from `main` on
+every push, not from a tag.
 
 ---
 
