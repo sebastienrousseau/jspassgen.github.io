@@ -18,8 +18,8 @@ lead: "jspassgen draws every character and word from Node.js crypto, offers eigh
 ## What is jspassgen?
 
 jspassgen is a free, open-source password and passphrase generator for
-Node.js. It runs as a command-line tool, installed as both `jspassgen` and
-`password-generator`, and as an ES module you can import. It produces eight
+Node.js. It runs as the `jspassgen` command and as an ES module you can
+import. It produces eight
 kinds of secret, from chunks of random characters to passphrases of words
 from the EFF word list, draws its randomness from Node.js `crypto`, and
 reports an entropy estimate in bits for each result. It is dual-licensed
@@ -46,7 +46,7 @@ sets out what it does and does not protect against.
 ## Can I use it in a browser?
 
 The jspassgen repository also publishes a web version at
-[sebastienrousseau.com/jspassgen](https://sebastienrousseau.com/jspassgen/).
+[doc.jspassgen.com](https://doc.jspassgen.com/).
 In code, the generators live in a core package that takes its random source
 as a parameter, and the repository ships a Web Crypto adapter for it; see
 the [API reference](/documentation/#the-core-package).

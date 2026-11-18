@@ -82,10 +82,10 @@ one is real:
 honeyword decoy set
 total: 4 (1 real, 3 decoys)
 
- 1. 95K9gt7AaOuT [DECOY]
- 2. HVCSHe7GCsi7 [REAL]
- 3. fRlbyKsy8Hmf [DECOY]
- 4. wNX655fozqia [DECOY]
+ 1. PFyQNtPZYZUK [DECOY]
+ 2. aM8DZZT9An/j [REAL]
+ 3. V74LQY36KlkY [DECOY]
+ 4. PAeJC0t4EyNX [DECOY]
 ```
 
 Honeywords are the technique Ari Juels and Ronald L. Rivest described in

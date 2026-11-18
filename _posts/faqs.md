@@ -57,7 +57,7 @@ decoy reveals a stolen password database. jspassgen generates the set; see
 ## Can I use it in a browser?
 
 Yes. A web version is published from the repository at
-[sebastienrousseau.com/jspassgen](https://sebastienrousseau.com/jspassgen/),
+[doc.jspassgen.com](https://doc.jspassgen.com/),
 and the core package runs with the repository's Web Crypto adapter.
 
 ## Is jspassgen a password manager?

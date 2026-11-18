@@ -37,8 +37,9 @@ npm install -g @sebastienrousseau/jspassgen
 jspassgen -p secure
 ```
 
-The package installs two commands, `jspassgen` and `password-generator`,
-which are the same program.
+The package installs the `jspassgen` command. It also installs
+`password-generator`, an older alias of the same command, so scripts that
+use the old name keep working.
 
 ## How do I choose the details myself?
 

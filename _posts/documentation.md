@@ -13,7 +13,7 @@ schema: "page"
 changefreq: "monthly"
 eyebrow: "Reference"
 headline: "Command-line options and library API"
-lead: "Everything the 0.0.20 package exposes, checked against its source."
+lead: "Everything the 0.0.21 package exposes, checked against its source."
 nav_docs: "true"
 ---
 ## Command-line options
