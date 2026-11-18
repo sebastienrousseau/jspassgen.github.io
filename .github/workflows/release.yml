@@ -1,0 +1,137 @@
+# SPDX-License-Identifier: Apache-2.0 OR MIT
+#
+# Release on a pushed `v<version>` tag, in two jobs:
+#
+# 1. check: scripts/check-release-tag.sh checks that the tag is an
+#    annotated, signed tag on the checked-out commit, whose message is
+#    `jspassgen.github.io v<version>` and whose version matches VERSION;
+#    then `make build` (every site check), a tarball of docs/ and
+#    SHA256SUMS over it.
+# 2. github-release: a draft GitHub release titled `jspassgen.github.io
+#    <version>` with the tarball and SHA256SUMS attached, and notes with
+#    What's Changed, the checksums and the Full Changelog line. The
+#    maintainer writes the Highlights and publishes the draft.
+#
+# The site itself is deployed by pages.yml from main, not from a tag.
+# CI cannot verify the tag's signature (it has no maintainer keys); it
+# checks that the tag carries one. Verify it locally with
+# `git verify-tag v<version>` before pushing the tag.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  SSG_VERSION: "0.0.76"
+  # SHA-256 of ssg-v0.0.76-x86_64-unknown-linux-musl.tar.gz, as published
+  # with the release; the job stops if the download differs.
+  SSG_SHA256: "a72a4904e0fcea0dd473489f359e651ae3d5c43fec01e3fdc7d5883e1b016863"
+
+jobs:
+  check:
+    name: Check the tag, build, archive
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      version: ${{ steps.tag.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Check the tag against VERSION
+        id: tag
+        env:
+          TAG: ${{ github.ref_name }}
+          PROJECT: ${{ github.event.repository.name }}
+        run: |
+          git fetch --force origin "+refs/tags/${TAG}:refs/tags/${TAG}"
+          scripts/check-release-tag.sh "$TAG" "$PROJECT" "$GITHUB_SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Install ssg
+        run: |
+          archive="ssg-v${SSG_VERSION}-x86_64-unknown-linux-musl.tar.gz"
+          curl -fsSLo "$archive" "https://github.com/sebastienrousseau/static-site-generator/releases/download/v${SSG_VERSION}/${archive}"
+          echo "${SSG_SHA256}  ${archive}" | sha256sum -c -
+          mkdir -p "$HOME/.local/bin" && tar -xzf "$archive" -C "$HOME/.local/bin" ssg
+          rm "$archive"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Build and audit
+        run: make build
+
+      # Sorted names, fixed owner and the commit time as mtime, so the
+      # archive depends only on the files in docs/.
+      - name: Archive and checksum
+        env:
+          PROJECT: ${{ github.event.repository.name }}
+          VERSION: ${{ steps.tag.outputs.version }}
+        run: |
+          mkdir -p release
+          archive="${PROJECT}-${VERSION}-site.tar.gz"
+          tar --sort=name --owner=0 --group=0 --numeric-owner \
+            --mtime="@$(git log -1 --format=%ct)" -cf - -C docs . |
+            gzip -n > "release/${archive}"
+          (cd release && sha256sum "$archive" > SHA256SUMS && cat SHA256SUMS)
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release
+          path: release/
+          if-no-files-found: error
+          retention-days: 30
+
+  github-release:
+    name: Draft the GitHub release
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # create the draft release and upload its assets
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: release
+          path: release
+
+      - name: Check the archive against SHA256SUMS
+        working-directory: release
+        run: sha256sum --check SHA256SUMS
+
+      - name: Create the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+          PROJECT: ${{ github.event.repository.name }}
+          VERSION: ${{ needs.check.outputs.version }}
+        # The generated notes end with the Full Changelog line; the
+        # checksums go just before it, as the release standard orders them.
+        run: |
+          gh api "repos/${REPO}/releases/generate-notes" -f tag_name="$TAG" --jq .body > generated.md
+          {
+            echo "## Highlights ⭐️"
+            echo
+            grep -v '^\*\*Full Changelog\*\*' generated.md
+            echo
+            echo "## Checksums"
+            echo
+            echo "SHA-256 of every asset attached to this release:"
+            echo
+            echo '```text'
+            cat release/SHA256SUMS
+            echo '```'
+            echo
+            grep '^\*\*Full Changelog\*\*' generated.md || true
+          } > notes.md
+          gh release create "$TAG" release/* --repo "$REPO" --draft \
+            --title "${PROJECT} ${VERSION}" --notes-file notes.md --verify-tag

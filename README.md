@@ -220,7 +220,12 @@ make clean       # remove build output
 
 `.github/workflows/quality-gate.yml` runs `make build` on every pull
 request into `main`. `.github/workflows/pages.yml` runs it on every push to
-`main` and deploys `docs/` to GitHub Pages.
+`main` and deploys `docs/` to GitHub Pages. `.github/workflows/release.yml`
+runs on a pushed `v<version>` tag: `scripts/check-release-tag.sh` checks
+that the tag is signed, annotated with `jspassgen.github.io v<version>`,
+matches `VERSION` and points at the built commit; the workflow then runs
+`make build` and drafts the GitHub release `jspassgen.github.io <version>`
+with a tarball of the built site and its SHA-256.
 
 ---
 

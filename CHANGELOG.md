@@ -20,6 +20,14 @@ All notable changes to jspassgen.com are documented here.
   image per page and runs `ssg audit`; the Pages workflow builds and deploys
   the result instead of uploading committed output.
 
+### Added
+
+- A release workflow: on a signed `v<version>` tag annotated
+  `jspassgen.github.io v<version>` and matching `VERSION`, it builds the
+  site and drafts the GitHub release with a tarball of `docs/` and its
+  SHA-256.
+- Dependabot updates for the pinned workflow actions.
+
 ### Removed
 
 - The in-browser generator on the home page, `openapi.json` (an API
