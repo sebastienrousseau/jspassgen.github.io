@@ -1,28 +1,26 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
-<!--
-README template. Global rules: see ~/Code/AGENTS.md and ~/Code/REPO-STANDARD.md.
-Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/releases/tag/v0.0.5
--->
 
 <p align="center">
-  <img src="static/logo.svg" alt="jspassgen logo" width="128" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/jspassgen/main/.github/assets/logo.svg" alt="jspassgen logo" width="128" />
 </p>
 
-<h1 align="center">jspassgen.com</h1>
+<h1 align="center">jspassgen.github.io</h1>
 
 <p align="center">
-  The website for jspassgen, a password and passphrase generator for Node.js, built with Static Site Generator and the Prism theme.
+  The source of jspassgen.com, the website for the jspassgen password and passphrase generator, built with Static Site Generator (ssg) and the Prism theme.
 </p>
 
 <p align="center">
   <a href="https://github.com/sebastienrousseau/jspassgen.github.io/actions"><img src="https://img.shields.io/github/actions/workflow/status/sebastienrousseau/jspassgen.github.io/pages.yml?style=for-the-badge&logo=github" alt="Build" height="28" /></a>
-  <a href="https://jspassgen.com/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fjspassgen.com&style=for-the-badge&labelColor=555555&label=jspassgen.com" alt="Website" height="28" /></a>
+  <a href="https://jspassgen.com/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fjspassgen.com&style=for-the-badge&up_color=fc8d62&label=jspassgen.com" alt="Website: jspassgen.com" height="28" /></a>
+  <a href="https://jspassgen.com/documentation/"><img src="https://img.shields.io/badge/docs-jspassgen.com-66c2a5?style=for-the-badge&labelColor=555555&logo=readthedocs" alt="Docs" height="28" /></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/sebastienrousseau/jspassgen.github.io"><img src="https://img.shields.io/ossf-scorecard/github.com/sebastienrousseau/jspassgen.github.io?style=for-the-badge&label=OpenSSF%20Scorecard&logo=openssf" alt="OpenSSF Scorecard" height="28" /></a>
-  <a href="LICENSE-MIT"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
+  <a href="LICENSE-APACHE"><img src="https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg?style=for-the-badge" alt="License: Apache-2.0 OR MIT" height="28" /></a>
+  <a href="#requirements"><img src="https://img.shields.io/badge/ssg-0.0.69%2B-93450a.svg?style=for-the-badge&logo=rust" alt="ssg 0.0.69 or newer" height="28" /></a>
 </p>
 
 <p align="center">
-  <img src="static/images/screenshot.png" alt="The jspassgen.com home page: the jspassgen masthead, the headline Strong passwords and passphrases from your terminal or your code, and cards for the quantum preset at 258 bits, the memorable preset of four EFF words and a honeyword set" width="100%" />
+  <img src="https://raw.githubusercontent.com/sebastienrousseau/jspassgen.github.io/main/static/images/screenshot.png" alt="The jspassgen.com home page: the jspassgen masthead, the headline Strong passwords and passphrases from your terminal or your code, and cards for the quantum preset at 258 bits, the memorable preset of four EFF words and a honeyword set" width="100%" />
 </p>
 
 ---
@@ -31,13 +29,13 @@ Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/release
 
 **Getting started**
 
-- [Install](#install): what to install to build the site
-- [Requirements](#requirements): ssg, Python, Chrome for the screenshot
+- [Install](#install): clone the repository and install ssg
+- [Requirements](#requirements): ssg, Python, Chrome for the images
 - [Quick Start](#quick-start): build, check and preview locally
 
-**The jspassgen.com ecosystem**
+**The jspassgen ecosystem**
 
-- [The jspassgen.com ecosystem](#the-jspassgencom-ecosystem): the site, the package it describes, the theme and the generator
+- [The jspassgen ecosystem](#the-jspassgen-ecosystem): the core library, its tools, native SDKs and this site
 
 **Library reference**
 
@@ -50,7 +48,7 @@ Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/release
 
 **Operational**
 
-- [When not to use jspassgen.com](#when-not-to-use-jspassgencom): where the reference lives instead
+- [When not to use jspassgen.github.io](#when-not-to-use-jspassgengithubio): where the reference lives instead
 - [Development](#development): make targets and CI
 - [Security](#security): CSP, SRI and supply chain
 - [Documentation](#documentation): where each part is described
@@ -59,9 +57,22 @@ Releases adhere strictly to https://github.com/sebastienrousseau/passmcp/release
 
 ---
 
+## Development version
+
+`VERSION` reads 0.0.2 and this repository has never been tagged. This
+branch prepares the site for the jspassgen suite's first lockstep release;
+jspassgen.com is deployed from `main` on every push, not from a tag.
+
+---
+
 ## Install
 
-### As a website project
+### As a JavaScript library
+
+This repository is a website, not a library: it exports no code to depend
+on.
+
+Clone it to build the site:
 
 ```bash
 git clone https://github.com/sebastienrousseau/jspassgen.github.io.git
@@ -76,11 +87,12 @@ or with `cargo install ssg`.
 
 ## Requirements
 
-- **ssg** 0.0.69 or newer on `PATH` (CI pins the 0.0.69 release by SHA-256).
-- **Python** 3.11 or newer, for the build scripts.
-- **Chrome or Chromium**, for the per-page social images in `make build`
-  and for `make screenshot`. Set `CHROME` to choose the binary. On macOS
-  with the display asleep, full Chrome can hang in headless mode; a
+- ssg 0.0.69 or newer on `PATH`. CI installs the 0.0.69 release and checks
+  the archive against a pinned SHA-256.
+- Python 3.11 or newer, for the build scripts (they use `tomllib`).
+- Chrome or Chromium, for the per-page social images in `make build` and
+  for `make screenshot`. Set `CHROME` to choose the binary. On macOS with
+  the display asleep, full Chrome can hang in headless mode; a
   `chrome-headless-shell` binary does not.
 
 ---
@@ -92,22 +104,39 @@ make build   # build into docs/ and run every check
 make serve   # build, then serve on http://127.0.0.1:8000
 ```
 
-`make build` fails if any check fails, so a passing build is a deployable one.
+`make build` fails if any check fails, so a passing build is a deployable
+one.
 
 ---
 
-## The jspassgen.com ecosystem
+## The jspassgen ecosystem
 
-jspassgen.com describes [jspassgen](https://github.com/sebastienrousseau/jspassgen),
-a password and passphrase generator for Node.js, and is generated by
-[Static Site Generator](https://github.com/sebastienrousseau/static-site-generator).
+jspassgen is one core library and the tools, SDKs and site around it.
+Every member is listed in
+[`docs/ecosystem.json`](https://github.com/sebastienrousseau/jspassgen/blob/main/docs/ecosystem.json)
+and, from the suite's first lockstep release, every member ships the same
+version ([ADR 0001](https://github.com/sebastienrousseau/jspassgen/blob/main/docs/adr/0001-ecosystem-lockstep.md)).
+The JavaScript tools depend on the core and add no generation logic of
+their own; each SDK is a native port that is checked against the core's
+conformance kit as its generators land.
 
 | Component | Purpose | Use case |
 | :--- | :--- | :--- |
-| jspassgen.github.io | This repository: content, layouts and build scripts | Changing the website |
-| jspassgen | The package the site documents; its source, README, CHANGELOG and SECURITY.md, and the npm registry, are the source of every fact here | Using jspassgen |
-| Prism theme | The design, from ssg-themes.github.io (MIT, see `LICENSES/`), recoloured from the jspassgen logo | Restyling the site |
-| Static Site Generator | Builds and audits the site | Building locally and in CI |
+| [`jspassgen`](https://github.com/sebastienrousseau/jspassgen) | Password and passphrase core, Node.js library, CLI, web UI and workers; source of the conformance kit | Programs that generate secrets |
+| [`jspassgen-cli`](https://github.com/sebastienrousseau/jspassgen-cli) | Command-line generator built on the core | Passwords in a terminal or a script |
+| [`jspassgen-mcp`](https://github.com/sebastienrousseau/jspassgen-mcp) | Local stdio MCP server | AI agents that need a generated secret |
+| [`jspassgen-lsp`](https://github.com/sebastienrousseau/jspassgen-lsp) | Language server for weak literal secrets | Editors checking configuration and `.env` files |
+| [`jspassgen-sdk-python`](https://github.com/sebastienrousseau/jspassgen-sdk-python) | Native port on the `secrets` module | Python programs |
+| [`jspassgen-sdk-rust`](https://github.com/sebastienrousseau/jspassgen-sdk-rust) | Native port on the OS CSPRNG | Rust programs |
+| [`jspassgen-sdk-java`](https://github.com/sebastienrousseau/jspassgen-sdk-java) | Native port on `SecureRandom` | JVM programs |
+| [`jspassgen-sdk-dotnet`](https://github.com/sebastienrousseau/jspassgen-sdk-dotnet) | Native port on `RandomNumberGenerator` | .NET programs |
+| [`jspassgen-sdk-cpp`](https://github.com/sebastienrousseau/jspassgen-sdk-cpp) | Native C++17 port on the OS CSPRNG | C++ programs |
+| **`jspassgen.github.io`** | Source of [jspassgen.com](https://jspassgen.com) | Evaluating the suite |
+
+Only `@sebastienrousseau/jspassgen` is on a package registry so far
+(0.0.21 on npm). The table gives each member's purpose; the other members
+are early, each README's Capabilities at a glance says what works today,
+and they first publish with the suite's first lockstep release.
 
 ---
 
@@ -127,13 +156,15 @@ a password and passphrase generator for Node.js, and is generated by
 
 ## Ecosystem comparison
 
-Not applicable: this repository is a website, not a library.
+Not applicable: this repository is a website, not a library, and has no
+counterpart to compare against.
 
 ---
 
 ## Benchmarks
 
-Not applicable: this repository is a website.
+Not applicable: this repository is a website and publishes no
+performance figures.
 
 ---
 
@@ -141,37 +172,39 @@ Not applicable: this repository is a website.
 
 - Fifteen pages: home, features, getting started, CLI and API reference,
   migration, security, FAQ, about, changelog, contributing, accessibility,
-  privacy, terms, colophon and 404. Contact details are on the about page:
+  privacy, terms, colophon and 404. Contact details are on the about page;
   the site has no form.
 - A shared header and footer in `_layouts/`, written once for the site.
 - Every fact about jspassgen is taken from its repository (source, README,
   CHANGELOG, SECURITY.md, CONTRIBUTING.md) and, where the repository
-  disagrees with itself, from the source code and the npm registry; the
-  command-line examples were run against the published package.
+  disagrees with itself, from the source code and the npm registry.
+- The logo in `static/logo.svg` is jspassgen's, copied from
+  `.github/assets/logo.svg` in the jspassgen repository.
 
 ---
 
 ## Configuration
 
-- `ssg.toml`: site name, description, `base_url` and the content, template
-  and output directories.
-- `_posts/content.schema.toml`: the front-matter fields every page must
-  carry; ssg fails the build when one is missing.
+- `ssg.toml` sets the site name, description, `base_url`, the content,
+  template and output directories, the generated agent files and the
+  `_headers` targets.
+- `_posts/content.schema.toml` lists the front-matter fields every page
+  must carry; ssg fails the build when one is missing.
 
 ---
 
 ## Examples
 
-Not applicable: this repository is a website. jspassgen's examples are on the
-site's [getting started page](https://jspassgen.com/getting-started/).
+Not applicable: this repository is a website. jspassgen's examples are on
+the site's [getting started page](https://jspassgen.com/getting-started/).
 
 ---
 
-## When not to use jspassgen.com
+## When not to use jspassgen.github.io
 
 The site summarises jspassgen for people deciding whether to use it. The
-reference is the jspassgen repository; when it disagrees with this site, it
-wins.
+reference is the [jspassgen repository](https://github.com/sebastienrousseau/jspassgen);
+when it disagrees with this site, it wins.
 
 ---
 
@@ -184,17 +217,18 @@ make screenshot  # render static/images/screenshot.png from the build
 make clean       # remove build output
 ```
 
-`.github/workflows/quality-gate.yml` runs `make build` on every pull request.
-`.github/workflows/pages.yml` runs it on `main` and deploys `docs/` to
-GitHub Pages.
+`.github/workflows/quality-gate.yml` runs `make build` on every pull
+request into `main`. `.github/workflows/pages.yml` runs it on every push to
+`main` and deploys `docs/` to GitHub Pages.
 
 ---
 
 ## Security
 
 Every page carries a strict Content Security Policy: scripts, styles and
-images from this origin only, and form submissions to this origin only. Every local script and stylesheet carries a Subresource Integrity
-hash, which the build verifies against the file. CI installs ssg from its
+images from this origin only, and form submissions to this origin only.
+Every local script and stylesheet carries a Subresource Integrity hash,
+which the build verifies against the file. CI installs ssg from its
 release and checks the archive against a pinned SHA-256.
 
 Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
@@ -203,19 +237,24 @@ Report vulnerabilities according to [`SECURITY.md`](SECURITY.md).
 
 ## Documentation
 
-- The website: <https://jspassgen.com/>
-- jspassgen: <https://github.com/sebastienrousseau/jspassgen>
-- The package: <https://www.npmjs.com/package/@sebastienrousseau/jspassgen>
-- Static Site Generator: <https://github.com/sebastienrousseau/static-site-generator>
-- Third-party licences: [`LICENSES/`](LICENSES/)
+- [The website](https://jspassgen.com/)
+- [CLI and API reference](https://jspassgen.com/documentation/)
+- [jspassgen repository](https://github.com/sebastienrousseau/jspassgen)
+- [jspassgen on npm](https://www.npmjs.com/package/@sebastienrousseau/jspassgen)
+- [Static Site Generator](https://github.com/sebastienrousseau/static-site-generator)
+- [Changelog](CHANGELOG.md)
+- [Security policy](SECURITY.md)
+- [Agent rules](AGENTS.md)
+- [Third-party licences](LICENSES/README.md): the Prism theme files in
+  `_layouts/` are MIT-licensed.
 
 ---
 
 ## Stability guarantees
 
-The October 2026 site's pages, `/` and `/about/`, are kept; every other page
-is new. Its hand-written `llms.txt`, `llms-full.txt`, `openapi.json` and
-`/.well-known/agents.json` are gone; the build generates `llms.txt`,
+The October 2026 site's pages, `/` and `/about/`, are kept; every other
+page is new. Its hand-written `llms.txt`, `llms-full.txt`, `openapi.json`
+and `/.well-known/agents.json` are gone; the build generates `llms.txt`,
 `agents.txt` and `/.well-known/ai-plugin.json`. The sitemap is dated by
 the last commit, and CI pins the ssg release it builds with.
 
@@ -223,9 +262,5 @@ the last commit, and CI pins the ssg release it builds with.
 
 ## License
 
-The site's source is available under [Apache-2.0](LICENSE-APACHE) or
-[MIT](LICENSE-MIT), at your option. The Prism theme files in `_layouts/` are
-MIT-licensed; see [`LICENSES/`](LICENSES/). jspassgen itself is also
-Apache-2.0 OR MIT. The logo in `static/logo.svg` is jspassgen's, from
-`.github/assets/logo.svg` in the jspassgen repository.
-
+Licensed under either [Apache License 2.0](LICENSE-APACHE) or
+[MIT](LICENSE-MIT), at your option.
