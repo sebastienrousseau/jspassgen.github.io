@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/sebastienrousseau/jspassgen/main/.github/assets/logo.svg" alt="jspassgen logo" width="128" />
 </p>
 
-<h1 align="center">jspassgen.github.io</h1>
+<h1 align="center">jspassgen.com</h1>
 
 <p align="center">
   The source of jspassgen.com, the website for the jspassgen password and passphrase generator, built with Static Site Generator (ssg) and the Prism theme.
@@ -48,7 +48,7 @@
 
 **Operational**
 
-- [When not to use jspassgen.github.io](#when-not-to-use-jspassgengithubio): where the reference lives instead
+- [When not to use jspassgen.com](#when-not-to-use-jspassgencom): where the reference lives instead
 - [Development](#development): make targets and CI
 - [Security](#security): CSP, SRI and supply chain
 - [Documentation](#documentation): where each part is described
@@ -124,7 +124,7 @@ conformance kit as its generators land.
 | [`jspassgen-sdk-java`](https://github.com/sebastienrousseau/jspassgen-sdk-java) | Native port on `SecureRandom` | JVM programs |
 | [`jspassgen-sdk-dotnet`](https://github.com/sebastienrousseau/jspassgen-sdk-dotnet) | Native port on `RandomNumberGenerator` | .NET programs |
 | [`jspassgen-sdk-cpp`](https://github.com/sebastienrousseau/jspassgen-sdk-cpp) | Native C++17 port on the OS CSPRNG | C++ programs |
-| **`jspassgen.github.io`** | Source of [jspassgen.com](https://jspassgen.com) | Evaluating the suite |
+| **`jspassgen.com`** | The suite's website, [jspassgen.com](https://jspassgen.com), from this repository | Evaluating the suite |
 
 Every member ships at 0.0.22, the suite's first lockstep release: the
 core, CLI, MCP and LSP servers on npm, the Python, Rust, Java and .NET
@@ -194,7 +194,7 @@ the site's [getting started page](https://jspassgen.com/getting-started/).
 
 ---
 
-## When not to use jspassgen.github.io
+## When not to use jspassgen.com
 
 The site summarises jspassgen for people deciding whether to use it. The
 reference is the [jspassgen repository](https://github.com/sebastienrousseau/jspassgen);
@@ -215,9 +215,9 @@ make clean       # remove build output
 request into `main`. `.github/workflows/pages.yml` runs it on every push to
 `main` and deploys `docs/` to GitHub Pages. `.github/workflows/release.yml`
 runs on a pushed `v<version>` tag: `scripts/check-release-tag.sh` checks
-that the tag is signed, annotated with `jspassgen.github.io v<version>`,
+that the tag is signed, annotated with `jspassgen.com v<version>`,
 matches `VERSION` and points at the built commit; the workflow then runs
-`make build` and drafts the GitHub release `jspassgen.github.io <version>`
+`make build` and drafts the GitHub release `jspassgen.com <version>`
 with a tarball of the built site and its SHA-256.
 
 ---

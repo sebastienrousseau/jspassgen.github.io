@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: Apache-2.0 OR MIT -->
 
-# AGENTS.md: jspassgen.github.io
+# AGENTS.md: jspassgen.com
 
 This repository is the source of <https://jspassgen.com>, the website for
 [jspassgen](https://github.com/sebastienrousseau/jspassgen), built with
