@@ -4,6 +4,21 @@
 
 All notable changes to jspassgen.com are documented here.
 
+## [0.0.23] - Unreleased
+
+### Changed
+
+- The site's project name is `jspassgen.com`, as pain001's site is
+  `pain001.com`: release tags are annotated `jspassgen.com v<version>`,
+  releases are titled `jspassgen.com <version>` and the release archive
+  is `jspassgen.com-<version>-site.tar.gz`. The release workflow defines
+  the name once instead of taking it from the repository name, which
+  stays `jspassgen.github.io`. The 0.0.22 tag and release keep the old
+  name.
+- The README and AGENTS.md name the project `jspassgen.com`; links to
+  the GitHub repository keep its real name.
+- `VERSION` reads 0.0.23.
+
 ## [0.0.22] - 2026-11-18
 
 ### Changed
