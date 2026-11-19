@@ -4,10 +4,10 @@
 #
 # 1. check: scripts/check-release-tag.sh checks that the tag is an
 #    annotated, signed tag on the checked-out commit, whose message is
-#    `jspassgen.github.io v<version>` and whose version matches VERSION;
-#    then `make build` (every site check), a tarball of docs/ and
-#    SHA256SUMS over it.
-# 2. github-release: a draft GitHub release titled `jspassgen.github.io
+#    `jspassgen.com v<version>` and whose version matches VERSION; then
+#    `make build` (every site check), a tarball of docs/ and SHA256SUMS
+#    over it.
+# 2. github-release: a draft GitHub release titled `jspassgen.com
 #    <version>` with the tarball and SHA256SUMS attached, and notes with
 #    What's Changed, the checksums and the Full Changelog line. The
 #    maintainer writes the Highlights and publishes the draft.
@@ -30,6 +30,10 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  # The project name in the tag message, the release title and the
+  # archive name. The site is jspassgen.com; the repository keeps its
+  # GitHub Pages name, jspassgen.github.io.
+  PROJECT: "jspassgen.com"
   SSG_VERSION: "0.0.76"
   # SHA-256 of ssg-v0.0.76-x86_64-unknown-linux-musl.tar.gz, as published
   # with the release; the job stops if the download differs.
@@ -52,7 +56,6 @@ jobs:
         id: tag
         env:
           TAG: ${{ github.ref_name }}
-          PROJECT: ${{ github.event.repository.name }}
         run: |
           git fetch --force origin "+refs/tags/${TAG}:refs/tags/${TAG}"
           scripts/check-release-tag.sh "$TAG" "$PROJECT" "$GITHUB_SHA" >> "$GITHUB_OUTPUT"
@@ -73,7 +76,6 @@ jobs:
       # archive depends only on the files in docs/.
       - name: Archive and checksum
         env:
-          PROJECT: ${{ github.event.repository.name }}
           VERSION: ${{ steps.tag.outputs.version }}
         run: |
           mkdir -p release
@@ -112,7 +114,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           TAG: ${{ github.ref_name }}
-          PROJECT: ${{ github.event.repository.name }}
           VERSION: ${{ needs.check.outputs.version }}
         # The generated notes end with the Full Changelog line; the
         # checksums go just before it, as the release standard orders them.
