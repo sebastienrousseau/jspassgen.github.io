@@ -2,8 +2,8 @@
 name: "jspassgen"
 short_name: "jspassgen"
 title: "Changelog: recent jspassgen releases | jspassgen"
-description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the clipboard clear and in-memory web history fixes, the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
-keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.22"
+description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the 0.0.23 CodeQL and documentation fixes, the clipboard clear and in-memory web history fixes, the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
+keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.23"
 author: "Sebastien Rousseau"
 date: "2026-10-26"
 news_publication_date: "2026-10-26"
@@ -15,6 +15,26 @@ eyebrow: "Changelog"
 headline: "Recent releases"
 lead: "A summary of the jspassgen CHANGELOG. The full file, with every release, is in the repository."
 ---
+## 0.0.23, 20 November 2026
+
+- **Clipboard fingerprint:** the detached process that clears the
+  clipboard now receives a salted scrypt fingerprint of the password
+  instead of an unsalted SHA-256 digest, so a leaked fingerprint is
+  expensive to brute-force.
+- **Log messages as data:** the Node.js logger and the entropy check
+  print a `%` in a message as it is, instead of reading it as a format
+  code.
+- **Owner-only storage files:** the Node.js file storage writes files
+  that only their owner can read (mode 0600).
+- **Worker origin check:** the password worker ignores a message that
+  names an origin other than its own.
+- **Static analysis and property tests:** CodeQL runs on every change,
+  and fast-check property tests check the generators' contracts. Every
+  member of the suite now has fuzz or property tests.
+- **Accurate security policy:** `SECURITY.md` offers GitHub private
+  vulnerability reporting and no longer claims full coverage or an
+  audit that has no record.
+
 ## 0.0.22, 18 November 2026
 
 - **Clipboard clear:** `--clipboard` promised to wipe the copied password
