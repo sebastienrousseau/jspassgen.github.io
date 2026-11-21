@@ -4,7 +4,7 @@
 
 All notable changes to jspassgen.com are documented here.
 
-## [0.0.24] - Unreleased
+## [0.0.24] - 2026-11-21
 
 ### Added
 
@@ -15,6 +15,14 @@ All notable changes to jspassgen.com are documented here.
   `jspassgen.com-<version>.intoto.jsonl`. Check a download with
   `gh attestation verify <file> --repo sebastienrousseau/jspassgen.github.io`.
   This answers the OpenSSF Scorecard Signed-Releases check.
+
+### Changed
+
+- `VERSION` reads 0.0.24.
+- The pages name 0.0.24 as the latest release (about page, structured
+  data, the home page's npm line, the documentation lead), and the
+  changelog page summarises it.
+- The README names 0.0.24 as the suite's third lockstep release.
 
 ## [0.0.23] - 2026-11-20
 

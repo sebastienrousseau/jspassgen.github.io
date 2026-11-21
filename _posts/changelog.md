@@ -2,8 +2,8 @@
 name: "jspassgen"
 short_name: "jspassgen"
 title: "Changelog: recent jspassgen releases | jspassgen"
-description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the 0.0.23 CodeQL and documentation fixes, the clipboard clear and in-memory web history fixes, the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
-keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.23"
+description: "What changed in recent jspassgen releases, from the jspassgen repository's CHANGELOG: the 0.0.24 build provenance, the 0.0.23 CodeQL and documentation fixes, the clipboard clear and in-memory web history fixes, the web word-list fix, the conformance kit, the move to @sebastienrousseau/jspassgen and the exports map."
+keywords: "jspassgen changelog, jspassgen release notes, jspassgen 0.0.24"
 author: "Sebastien Rousseau"
 date: "2026-10-26"
 news_publication_date: "2026-10-26"
@@ -15,6 +15,17 @@ eyebrow: "Changelog"
 headline: "Recent releases"
 lead: "A summary of the jspassgen CHANGELOG. The full file, with every release, is in the repository."
 ---
+## 0.0.24, 21 November 2026
+
+- **Build provenance:** every release now carries the SLSA build
+  provenance of its files, signed through Sigstore, as
+  `jspassgen-0.0.24.intoto.jsonl`. Check a download with
+  `gh attestation verify <file> --repo sebastienrousseau/jspassgen`.
+- **One tarball everywhere:** the release is built by CI from the signed
+  tag, and the tarball attached to the GitHub release is the one npm
+  serves.
+- **No API change:** the package exposes the same API as 0.0.23.
+
 ## 0.0.23, 20 November 2026
 
 - **Clipboard fingerprint:** the detached process that clears the
