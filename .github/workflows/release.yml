@@ -154,7 +154,7 @@ jobs:
             echo
             echo '```text'
             cat release/SHA256SUMS
-            (cd release && sha256sum -- *.intoto.jsonl)
+            (cd release && sha256sum -- SHA256SUMS *.intoto.jsonl)
             echo '```'
             echo
             grep '^\*\*Full Changelog\*\*' generated.md || true

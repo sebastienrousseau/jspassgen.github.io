@@ -4,6 +4,14 @@
 
 All notable changes to jspassgen.com are documented here.
 
+## [0.0.25] - Unreleased
+
+### Fixed
+
+- The release notes' checksums list `SHA256SUMS` itself, so every
+  asset attached to a release has its SHA-256 in the notes. The 0.0.23
+  and 0.0.24 notes omitted it; the 0.0.24 notes were corrected.
+
 ## [0.0.24] - 2026-11-21
 
 ### Added
