@@ -4,6 +4,18 @@
 
 All notable changes to jspassgen.com are documented here.
 
+## [0.0.24] - Unreleased
+
+### Added
+
+- Releases carry their SLSA build provenance. The release workflow
+  attests every release file with `actions/attest-build-provenance`,
+  signed through Sigstore and stored as a GitHub attestation, and
+  attaches the bundle, listed in the release checksums, as
+  `jspassgen.com-<version>.intoto.jsonl`. Check a download with
+  `gh attestation verify <file> --repo sebastienrousseau/jspassgen.github.io`.
+  This answers the OpenSSF Scorecard Signed-Releases check.
+
 ## [0.0.23] - 2026-11-20
 
 ### Changed

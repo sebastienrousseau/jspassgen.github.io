@@ -11,6 +11,8 @@
 #    <version>` with the tarball and SHA256SUMS attached, and notes with
 #    What's Changed, the checksums and the Full Changelog line. The
 #    maintainer writes the Highlights and publishes the draft.
+#    The release also carries the SLSA build provenance of its files,
+#    signed through Sigstore (<project>-<version>.intoto.jsonl).
 #
 # The site itself is deployed by pages.yml from main, not from a tag.
 # CI cannot verify the tag's signature (it has no maintainer keys); it
@@ -99,6 +101,8 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: write # create the draft release and upload its assets
+      id-token: write # sign the build provenance through Sigstore
+      attestations: write # store the provenance as a GitHub attestation
     steps:
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
@@ -108,6 +112,26 @@ jobs:
       - name: Check the archive against SHA256SUMS
         working-directory: release
         run: sha256sum --check SHA256SUMS
+
+      # SLSA build provenance for every release file, signed through
+      # Sigstore and stored as a GitHub attestation of this run. Its
+      # Sigstore bundle (the signed in-toto statement) is attached as
+      # <project>-<version>.intoto.jsonl, so the release carries its own
+      # provenance. Check an asset with
+      # `gh attestation verify <file> --repo <owner>/<repo>`; add
+      # `--bundle <project>-<version>.intoto.jsonl` to check it against
+      # the attached bundle.
+      - name: Attest build provenance
+        id: attest
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: release/*
+
+      - name: Attach the provenance bundle
+        env:
+          BUNDLE: ${{ steps.attest.outputs.bundle-path }}
+          VERSION: ${{ needs.check.outputs.version }}
+        run: cp "$BUNDLE" "release/${PROJECT}-${VERSION}.intoto.jsonl"
 
       - name: Create the draft release
         env:
@@ -130,6 +154,7 @@ jobs:
             echo
             echo '```text'
             cat release/SHA256SUMS
+            (cd release && sha256sum -- *.intoto.jsonl)
             echo '```'
             echo
             grep '^\*\*Full Changelog\*\*' generated.md || true
