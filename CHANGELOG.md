@@ -4,7 +4,7 @@
 
 All notable changes to jspassgen.com are documented here.
 
-## [0.0.23] - Unreleased
+## [0.0.23] - 2026-11-20
 
 ### Changed
 
@@ -13,11 +13,16 @@ All notable changes to jspassgen.com are documented here.
   releases are titled `jspassgen.com <version>` and the release archive
   is `jspassgen.com-<version>-site.tar.gz`. The release workflow defines
   the name once instead of taking it from the repository name, which
-  stays `jspassgen.github.io`. The 0.0.22 tag and release keep the old
-  name.
+  stays `jspassgen.github.io`. The 0.0.22 tag and release were renamed
+  the same way.
 - The README and AGENTS.md name the project `jspassgen.com`; links to
   the GitHub repository keep its real name.
 - `VERSION` reads 0.0.23.
+- The pages name 0.0.23 as the latest release (about page, structured
+  data, the home page's npm line, the documentation lead), and the
+  changelog page summarises it.
+- `.github/CODEOWNERS` names the maintainer as owner of every file, so
+  the `main` ruleset can require a code-owner review.
 
 ## [0.0.22] - 2026-11-18
 
