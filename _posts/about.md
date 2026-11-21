@@ -30,7 +30,7 @@ sebastienrousseau. The first commit was made in April 2022.
 | **Language** | JavaScript, ES modules, with TypeScript declarations |
 | **Runtime** | Node.js 22 or newer |
 | **Licence** | Apache-2.0 or MIT, at your option |
-| **Latest release** | [0.0.23](https://github.com/sebastienrousseau/jspassgen/releases/tag/v0.0.23), 20 November 2026 |
+| **Latest release** | [0.0.24](https://github.com/sebastienrousseau/jspassgen/releases/tag/v0.0.24), 21 November 2026 |
 | **Source** | [github.com/sebastienrousseau/jspassgen](https://github.com/sebastienrousseau/jspassgen) |
 | **Security policy** | [SECURITY.md](https://github.com/sebastienrousseau/jspassgen/security/policy) |
 | **Contact** | hello@jspassgen.com |
